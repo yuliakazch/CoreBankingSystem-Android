@@ -1,3 +1,7 @@
 <resources>
 	<string name="app_name">Банковская система</string>
+	<string name="tariffs">Тарифы</string>
+	<string name="credits">Кредиты</string>
+	<string name="clients">Клиенты</string>
+	<string name="commissions">Комиссии</string>
 </resources>
