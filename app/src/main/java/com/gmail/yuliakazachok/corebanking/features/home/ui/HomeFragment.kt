@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.gmail.yuliakazachok.corebanking.R
 import com.gmail.yuliakazachok.corebanking.databinding.FragmentHomeBinding
 import com.gmail.yuliakazachok.corebanking.features.home.presentation.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -46,7 +47,7 @@ class HomeFragment : Fragment() {
             // TODO: переход на клиентов
         }
         binding.commissions.setOnClickListener {
-            // TODO: переход на комиссии
+            navController.navigate(R.id.action_homeFragment_to_mainCommissionsFragment)
         }
     }
 

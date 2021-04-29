@@ -9,5 +9,14 @@
         android:id="@+id/homeFragment"
         android:name="com.gmail.yuliakazachok.corebanking.features.home.ui.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_mainCommissionsFragment"
+            app:destination="@id/mainCommissionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainCommissionsFragment"
+        android:name="com.gmail.yuliakazachok.corebanking.features.commissions.maincommissions.ui.MainCommissionsFragment"
+        android:label="fragment_main_commissions"
+        tools:layout="@layout/fragment_maincommissions" />
 </navigation>
