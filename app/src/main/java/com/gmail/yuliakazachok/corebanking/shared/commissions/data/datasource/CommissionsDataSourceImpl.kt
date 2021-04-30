@@ -10,4 +10,12 @@ class CommissionsDataSourceImpl @Inject constructor(
 
     override suspend fun getCommissions(): List<CommissionDto> =
         api.getCommissions()
+
+    override suspend fun saveCommission(commissionDto: CommissionDto) {
+        api.saveCommission(commissionDto)
+    }
+
+    override suspend fun deleteCommission(name: String) {
+        api.deleteCommission(name)
+    }
 }

@@ -5,4 +5,8 @@ import com.gmail.yuliakazachok.corebanking.shared.commissions.domain.entities.Co
 interface CommissionsRepository {
 
     suspend fun getCommissions(): List<Commission>
+
+    suspend fun saveCommission(commission: Commission)
+
+    suspend fun deleteCommission(name: String)
 }
