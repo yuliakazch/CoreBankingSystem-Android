@@ -1,4 +1,4 @@
-package com.gmail.yuliakazachok.corebanking.features.commissions.maincommissions.data.dto
+package com.gmail.yuliakazachok.corebanking.shared.commissions.data.dto
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

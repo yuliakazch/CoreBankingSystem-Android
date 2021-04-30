@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gmail.yuliakazachok.corebanking.databinding.ItemCommissionBinding
-import com.gmail.yuliakazachok.corebanking.features.commissions.maincommissions.domain.entities.Commission
+import com.gmail.yuliakazachok.corebanking.shared.commissions.domain.entities.Commission
 
 class CommissionViewHolder(
     private val binding: ItemCommissionBinding

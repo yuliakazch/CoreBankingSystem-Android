@@ -2,8 +2,8 @@ package com.gmail.yuliakazachok.corebanking.features.commissions.maincommissions
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.gmail.yuliakazachok.corebanking.features.commissions.maincommissions.domain.entities.Commission
-import com.gmail.yuliakazachok.corebanking.features.commissions.maincommissions.domain.usecases.GetCommissionsUseCase
+import com.gmail.yuliakazachok.corebanking.shared.commissions.domain.entities.Commission
+import com.gmail.yuliakazachok.corebanking.shared.commissions.domain.usecases.GetCommissionsUseCase
 import com.gmail.yuliakazachok.corebanking.libraries.core.presentation.EventsDispatcher
 import com.gmail.yuliakazachok.corebanking.libraries.core.presentation.EventsDispatcherOwner
 import kotlinx.coroutines.flow.Flow

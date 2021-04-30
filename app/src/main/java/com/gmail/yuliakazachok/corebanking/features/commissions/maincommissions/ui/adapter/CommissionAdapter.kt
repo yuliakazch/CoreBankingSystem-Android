@@ -3,7 +3,7 @@ package com.gmail.yuliakazachok.corebanking.features.commissions.maincommissions
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.gmail.yuliakazachok.corebanking.features.commissions.maincommissions.domain.entities.Commission
+import com.gmail.yuliakazachok.corebanking.shared.commissions.domain.entities.Commission
 import com.gmail.yuliakazachok.corebanking.features.commissions.maincommissions.presentation.MainCommissionsViewModel
 
 class CommissionAdapter(private val viewModel: MainCommissionsViewModel) :
