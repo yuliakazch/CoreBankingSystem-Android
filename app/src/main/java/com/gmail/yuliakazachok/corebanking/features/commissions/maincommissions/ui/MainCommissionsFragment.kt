@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.coroutineScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.gmail.yuliakazachok.corebanking.R
 import com.gmail.yuliakazachok.corebanking.databinding.FragmentMaincommissionsBinding
 import com.gmail.yuliakazachok.corebanking.features.commissions.maincommissions.presentation.MainCommissionsViewModel
 import com.gmail.yuliakazachok.corebanking.features.commissions.maincommissions.ui.adapter.CommissionAdapter
@@ -17,7 +19,7 @@ import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainCommissionsFragment : Fragment() {
+class MainCommissionsFragment : Fragment(), MainCommissionsViewModel.EventListener {
 
     @Inject
     lateinit var viewModel: MainCommissionsViewModel
@@ -35,6 +37,7 @@ class MainCommissionsFragment : Fragment() {
     ): View {
         _binding = FragmentMaincommissionsBinding.inflate(inflater, container, false)
         navController = NavHostFragment.findNavController(this)
+        viewModel.eventsDispatcher.bind(viewLifecycleOwner, this@MainCommissionsFragment)
         setAdapter()
         setListeners()
         return binding.root
@@ -53,6 +56,16 @@ class MainCommissionsFragment : Fragment() {
             viewModel.getCommissions()
             binding.swipeRefresh.isRefreshing = false
         }
+    }
+
+    override fun showToastError() {
+        Toast
+            .makeText(
+                requireActivity(),
+                requireActivity().resources.getString(R.string.message_error),
+                Toast.LENGTH_SHORT
+            )
+            .show()
     }
 
     override fun onDestroyView() {

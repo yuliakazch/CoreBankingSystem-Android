@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gmail.yuliakazachok.corebanking.features.commissions.maincommissions.domain.entities.Commission
 import com.gmail.yuliakazachok.corebanking.features.commissions.maincommissions.domain.usecases.GetCommissionsUseCase
+import com.gmail.yuliakazachok.corebanking.libraries.core.presentation.EventsDispatcher
+import com.gmail.yuliakazachok.corebanking.libraries.core.presentation.EventsDispatcherOwner
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.filterNotNull
@@ -12,7 +14,13 @@ import javax.inject.Inject
 
 class MainCommissionsViewModel @Inject constructor(
     private val getCommissionsUseCase: GetCommissionsUseCase
-) : ViewModel() {
+) : ViewModel(), EventsDispatcherOwner<MainCommissionsViewModel.EventListener> {
+
+    interface EventListener {
+        fun showToastError()
+    }
+
+    override val eventsDispatcher = EventsDispatcher<EventListener>()
 
     private val _listCommission = MutableStateFlow<List<Commission>?>(null)
     val listCommission: Flow<List<Commission>>
@@ -23,6 +31,12 @@ class MainCommissionsViewModel @Inject constructor(
     }
 
     fun getCommissions() = viewModelScope.launch {
-        _listCommission.value = getCommissionsUseCase()
+        try {
+            _listCommission.value = getCommissionsUseCase()
+        } catch (throwable: Throwable) {
+            eventsDispatcher.dispatchEvent {
+                showToastError()
+            }
+        }
     }
 }
