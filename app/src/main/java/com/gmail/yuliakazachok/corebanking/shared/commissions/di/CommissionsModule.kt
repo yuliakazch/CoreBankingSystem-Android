@@ -13,19 +13,19 @@ import retrofit2.Retrofit
 
 @Module
 @InstallIn(FragmentComponent::class)
-object MainCommissionsModule {
+object CommissionsModule {
 
     @Provides
-    fun bindMainCommissionsRepository(
+    fun bindCommissionsRepository(
         commissionsRepositoryImpl: CommissionsRepositoryImpl
     ): CommissionsRepository = commissionsRepositoryImpl
 
     @Provides
-    fun bindMainCommissionsDataSource(
+    fun bindCommissionsDataSource(
         mainCommissionsDataSourceImpl: CommissionsDataSourceImpl
     ): CommissionsDataSource = mainCommissionsDataSourceImpl
 
     @Provides
-    fun provideMainCommissionsApi(retrofit: Retrofit) =
+    fun provideCommissionsApi(retrofit: Retrofit) =
         retrofit.create(CommissionsApi::class.java)
 }

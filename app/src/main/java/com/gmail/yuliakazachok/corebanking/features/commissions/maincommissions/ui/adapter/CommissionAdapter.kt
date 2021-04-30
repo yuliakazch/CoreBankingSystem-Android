@@ -15,7 +15,7 @@ class CommissionAdapter(private val viewModel: MainCommissionsViewModel) :
     ): CommissionViewHolder = CommissionViewHolder.from(parent)
 
     override fun onBindViewHolder(holder: CommissionViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), viewModel)
     }
 }
 

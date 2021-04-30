@@ -18,5 +18,14 @@
         android:id="@+id/mainCommissionsFragment"
         android:name="com.gmail.yuliakazachok.corebanking.features.commissions.maincommissions.ui.MainCommissionsFragment"
         android:label="fragment_main_commissions"
-        tools:layout="@layout/fragment_maincommissions" />
+        tools:layout="@layout/fragment_maincommissions">
+        <action
+            android:id="@+id/action_mainCommissionsFragment_to_detailCommissionsFragment"
+            app:destination="@id/detailCommissionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailCommissionsFragment"
+        android:name="com.gmail.yuliakazachok.corebanking.features.commissions.detailcommission.ui.DetailCommissionFragment"
+        android:label="fragment_detail_commission"
+        tools:layout="@layout/fragment_detailcommission" />
 </navigation>

@@ -13,6 +13,8 @@ import com.gmail.yuliakazachok.corebanking.R
 import com.gmail.yuliakazachok.corebanking.databinding.FragmentMaincommissionsBinding
 import com.gmail.yuliakazachok.corebanking.features.commissions.maincommissions.presentation.MainCommissionsViewModel
 import com.gmail.yuliakazachok.corebanking.features.commissions.maincommissions.ui.adapter.CommissionAdapter
+import com.gmail.yuliakazachok.corebanking.libraries.utils.KeysArgsBundle
+import com.gmail.yuliakazachok.corebanking.shared.commissions.domain.entities.Commission
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -56,6 +58,18 @@ class MainCommissionsFragment : Fragment(), MainCommissionsViewModel.EventListen
             viewModel.getCommissions()
             binding.swipeRefresh.isRefreshing = false
         }
+        binding.addButton.setOnClickListener {
+
+        }
+    }
+
+    override fun goToDetailCommission(commission: Commission) {
+        navController.navigate(
+            R.id.action_mainCommissionsFragment_to_detailCommissionsFragment,
+            Bundle().apply {
+                putSerializable(KeysArgsBundle.COMMISSION_DETAIL, commission)
+            }
+        )
     }
 
     override fun showToastError() {

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gmail.yuliakazachok.corebanking.databinding.ItemCommissionBinding
+import com.gmail.yuliakazachok.corebanking.features.commissions.maincommissions.presentation.MainCommissionsViewModel
 import com.gmail.yuliakazachok.corebanking.shared.commissions.domain.entities.Commission
 
 class CommissionViewHolder(
@@ -18,7 +19,10 @@ class CommissionViewHolder(
         }
     }
 
-    fun bind(item: Commission) {
+    fun bind(item: Commission, viewModel: MainCommissionsViewModel) {
         binding.root.text = item.name
+        binding.root.setOnClickListener {
+            viewModel.goToDetail(item)
+        }
     }
 }

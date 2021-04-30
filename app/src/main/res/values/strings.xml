@@ -5,4 +5,8 @@
 	<string name="clients">Клиенты</string>
 	<string name="commissions">Комиссии</string>
 	<string name="message_error">Произошла ошибка!</string>
+	<string name="commission">Комиссия</string>
+	<string name="interest">Процент</string>
+	<string name="edit">Редактировать</string>
+	<string name="delete">Удалить</string>
 </resources>
