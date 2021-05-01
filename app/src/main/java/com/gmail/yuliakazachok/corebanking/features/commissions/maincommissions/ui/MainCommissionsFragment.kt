@@ -45,6 +45,11 @@ class MainCommissionsFragment : Fragment(), MainCommissionsViewModel.EventListen
         return binding.root
     }
 
+    override fun onStart() {
+        super.onStart()
+        viewModel.getCommissions()
+    }
+
     private fun setAdapter() {
         val adapter = CommissionAdapter(viewModel)
         binding.listCommissions.adapter = adapter

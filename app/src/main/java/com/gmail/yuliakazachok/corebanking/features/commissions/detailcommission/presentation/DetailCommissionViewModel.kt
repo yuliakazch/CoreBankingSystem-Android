@@ -14,6 +14,7 @@ import javax.inject.Inject
 
 class DetailCommissionViewModel @Inject constructor(
     private val deleteCommissionUseCase: DeleteCommissionUseCase
+    //val commission: Commission?
 ) : ViewModel(), EventsDispatcherOwner<DetailCommissionViewModel.EventListener> {
 
     interface EventListener {
@@ -23,6 +24,10 @@ class DetailCommissionViewModel @Inject constructor(
     override val eventsDispatcher = EventsDispatcher<EventListener>()
 
     val commission = MutableStateFlow<Commission?>(null)
+
+//    private val _commission = MutableStateFlow<Commission?>(null)
+//    val commission: Flow<Commission>
+//        get() = _commission.filterNotNull()
 
     fun deleteCommission() = viewModelScope.launch {
         commission.value?.let {

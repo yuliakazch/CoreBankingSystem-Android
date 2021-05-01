@@ -27,10 +27,6 @@ class MainCommissionsViewModel @Inject constructor(
     val listCommission: Flow<List<Commission>>
         get() = _listCommission.filterNotNull()
 
-    init {
-        getCommissions()
-    }
-
     fun getCommissions() = viewModelScope.launch {
         try {
             _listCommission.value = getCommissionsUseCase()

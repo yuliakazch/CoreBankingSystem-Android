@@ -16,14 +16,14 @@ import retrofit2.Retrofit
 object CommissionsModule {
 
     @Provides
-    fun bindCommissionsRepository(
+    fun provideCommissionsRepository(
         commissionsRepositoryImpl: CommissionsRepositoryImpl
     ): CommissionsRepository = commissionsRepositoryImpl
 
     @Provides
-    fun bindCommissionsDataSource(
-        mainCommissionsDataSourceImpl: CommissionsDataSourceImpl
-    ): CommissionsDataSource = mainCommissionsDataSourceImpl
+    fun provideCommissionsDataSource(
+        commissionsDataSourceImpl: CommissionsDataSourceImpl
+    ): CommissionsDataSource = commissionsDataSourceImpl
 
     @Provides
     fun provideCommissionsApi(retrofit: Retrofit) =

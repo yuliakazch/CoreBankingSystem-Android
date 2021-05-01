@@ -38,9 +38,8 @@ class DetailCommissionFragment : Fragment(), DetailCommissionViewModel.EventList
     ): View {
         _binding = FragmentDetailcommissionBinding.inflate(inflater, container, false)
         navController = NavHostFragment.findNavController(this)
-        Bundle().apply {
-            viewModel.commission.value = getSerializable(KeysArgsBundle.COMMISSION_DETAIL) as? Commission
-        }
+        viewModel.commission.value =
+            arguments?.getSerializable(KeysArgsBundle.COMMISSION_DETAIL) as? Commission
         setListenersButtons()
         setText()
         return binding.root
@@ -58,8 +57,10 @@ class DetailCommissionFragment : Fragment(), DetailCommissionViewModel.EventList
 
     private fun setText() {
         viewModel.commission.onEach {
-            binding.nameValue.text = it?.name
-            binding.interestValue.text = it?.interest.toString()
+            it?.let {
+                binding.nameValue.text = it.name
+                binding.interestValue.text = it.interest.toString()
+            }
         }.launchIn(viewLifecycleOwner.lifecycle.coroutineScope)
     }
 
