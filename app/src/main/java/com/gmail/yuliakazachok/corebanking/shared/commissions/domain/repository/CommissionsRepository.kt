@@ -6,6 +6,8 @@ interface CommissionsRepository {
 
     suspend fun getCommissions(): List<Commission>
 
+    suspend fun getCommissionByName(name: String): Commission
+
     suspend fun saveCommission(commission: Commission)
 
     suspend fun deleteCommission(name: String)

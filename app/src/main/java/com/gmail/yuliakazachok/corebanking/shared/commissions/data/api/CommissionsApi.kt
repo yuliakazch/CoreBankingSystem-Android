@@ -8,6 +8,9 @@ interface CommissionsApi {
     @GET("/commission")
     suspend fun getCommissions(): List<CommissionDto>
 
+    @GET("/commission/{name}")
+    suspend fun getCommissionByName(@Path("name") name: String): CommissionDto
+
     @POST("/commission")
     suspend fun saveCommission(@Body commissionDto: CommissionDto)
 
