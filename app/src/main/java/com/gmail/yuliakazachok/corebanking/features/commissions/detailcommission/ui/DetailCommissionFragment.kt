@@ -38,11 +38,14 @@ class DetailCommissionFragment : Fragment(), DetailCommissionViewModel.EventList
     ): View {
         _binding = FragmentDetailcommissionBinding.inflate(inflater, container, false)
         navController = NavHostFragment.findNavController(this)
-        viewModel.commission.value =
-            arguments?.getSerializable(KeysArgsBundle.COMMISSION_DETAIL) as? Commission
         setListenersButtons()
         setText()
         return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.getCommissionByName(arguments?.getString(KeysArgsBundle.COMMISSION_DETAIL))
     }
 
     private fun setListenersButtons() {
@@ -57,10 +60,8 @@ class DetailCommissionFragment : Fragment(), DetailCommissionViewModel.EventList
 
     private fun setText() {
         viewModel.commission.onEach {
-            it?.let {
-                binding.nameValue.text = it.name
-                binding.interestValue.text = it.interest.toString()
-            }
+            binding.nameValue.text = it.name
+            binding.interestValue.text = it.interest.toString()
         }.launchIn(viewLifecycleOwner.lifecycle.coroutineScope)
     }
 
@@ -69,7 +70,7 @@ class DetailCommissionFragment : Fragment(), DetailCommissionViewModel.EventList
     }
 
     private fun goToEditCommissions() {
-        // TODO: переход на экран редактирования комиссии
+        navController.navigate(R.id.action_detailCommissionsFragment_to_editCommissionsFragment)
     }
 
     override fun showToastError() {

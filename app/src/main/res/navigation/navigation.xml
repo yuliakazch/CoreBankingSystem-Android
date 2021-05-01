@@ -22,10 +22,22 @@
         <action
             android:id="@+id/action_mainCommissionsFragment_to_detailCommissionsFragment"
             app:destination="@id/detailCommissionsFragment" />
+        <action
+            android:id="@+id/action_mainCommissionsFragment_to_editCommissionsFragment"
+            app:destination="@id/editCommissionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailCommissionsFragment"
         android:name="com.gmail.yuliakazachok.corebanking.features.commissions.detailcommission.ui.DetailCommissionFragment"
         android:label="fragment_detail_commission"
-        tools:layout="@layout/fragment_detailcommission" />
+        tools:layout="@layout/fragment_detailcommission">
+        <action
+            android:id="@+id/action_detailCommissionsFragment_to_editCommissionsFragment"
+            app:destination="@id/editCommissionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editCommissionsFragment"
+        android:name="com.gmail.yuliakazachok.corebanking.features.commissions.editcommission.ui.EditCommissionFragment"
+        android:label="fragment_edit_commission"
+        tools:layout="@layout/fragment_editcommission" />
 </navigation>

@@ -6,6 +6,7 @@ import com.gmail.yuliakazachok.corebanking.libraries.core.presentation.EventsDis
 import com.gmail.yuliakazachok.corebanking.libraries.core.presentation.EventsDispatcherOwner
 import com.gmail.yuliakazachok.corebanking.shared.commissions.domain.entities.Commission
 import com.gmail.yuliakazachok.corebanking.shared.commissions.domain.usecases.DeleteCommissionUseCase
+import com.gmail.yuliakazachok.corebanking.shared.commissions.domain.usecases.GetCommissionByNameUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.filterNotNull
@@ -13,8 +14,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DetailCommissionViewModel @Inject constructor(
+    private val getCommissionByNameUseCase: GetCommissionByNameUseCase,
     private val deleteCommissionUseCase: DeleteCommissionUseCase
-    //val commission: Commission?
 ) : ViewModel(), EventsDispatcherOwner<DetailCommissionViewModel.EventListener> {
 
     interface EventListener {
@@ -23,14 +24,22 @@ class DetailCommissionViewModel @Inject constructor(
 
     override val eventsDispatcher = EventsDispatcher<EventListener>()
 
-    val commission = MutableStateFlow<Commission?>(null)
+    private val _commission = MutableStateFlow<Commission?>(null)
+    val commission: Flow<Commission>
+        get() = _commission.filterNotNull()
 
-//    private val _commission = MutableStateFlow<Commission?>(null)
-//    val commission: Flow<Commission>
-//        get() = _commission.filterNotNull()
+    fun getCommissionByName(nameCommission: String?) = viewModelScope.launch {
+        nameCommission?.let {
+            try {
+                _commission.value = getCommissionByNameUseCase(it)
+            } catch (throwable: Throwable) {
+                eventsDispatcher.dispatchEvent { showToastError() }
+            }
+        }
+    }
 
     fun deleteCommission() = viewModelScope.launch {
-        commission.value?.let {
+        _commission.value?.let {
             try {
                 deleteCommissionUseCase(it.name)
             } catch (throwable: Throwable) {

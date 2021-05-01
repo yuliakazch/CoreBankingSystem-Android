@@ -64,15 +64,19 @@ class MainCommissionsFragment : Fragment(), MainCommissionsViewModel.EventListen
             binding.swipeRefresh.isRefreshing = false
         }
         binding.addButton.setOnClickListener {
-
+            goToCreateCommission()
         }
     }
 
-    override fun goToDetailCommission(commission: Commission) {
+    fun goToCreateCommission() {
+        navController.navigate(R.id.action_mainCommissionsFragment_to_editCommissionsFragment)
+    }
+
+    override fun goToDetailCommission(nameCommission: String) {
         navController.navigate(
             R.id.action_mainCommissionsFragment_to_detailCommissionsFragment,
             Bundle().apply {
-                putSerializable(KeysArgsBundle.COMMISSION_DETAIL, commission)
+                putString(KeysArgsBundle.COMMISSION_DETAIL, nameCommission)
             }
         )
     }

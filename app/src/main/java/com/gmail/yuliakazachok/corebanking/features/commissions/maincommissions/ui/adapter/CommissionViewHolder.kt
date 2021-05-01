@@ -22,7 +22,7 @@ class CommissionViewHolder(
     fun bind(item: Commission, viewModel: MainCommissionsViewModel) {
         binding.root.text = item.name
         binding.root.setOnClickListener {
-            viewModel.goToDetail(item)
+            viewModel.goToDetail(item.name)
         }
     }
 }
