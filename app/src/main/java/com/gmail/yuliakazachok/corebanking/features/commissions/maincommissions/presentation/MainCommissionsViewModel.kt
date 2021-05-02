@@ -18,7 +18,7 @@ class MainCommissionsViewModel @Inject constructor(
 
     interface EventListener {
         fun showToastError()
-        fun goToDetailCommission(nameCommission: String)
+        fun goToDetailCommission(idCommission: Int)
     }
 
     override val eventsDispatcher = EventsDispatcher<EventListener>()
@@ -35,7 +35,7 @@ class MainCommissionsViewModel @Inject constructor(
         }
     }
 
-    fun goToDetail(nameCommission: String) {
-        eventsDispatcher.dispatchEvent { goToDetailCommission(nameCommission) }
+    fun goToDetail(idCommission: Int) {
+        eventsDispatcher.dispatchEvent { goToDetailCommission(idCommission) }
     }
 }

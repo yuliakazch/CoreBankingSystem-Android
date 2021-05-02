@@ -11,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.gmail.yuliakazachok.corebanking.R
 import com.gmail.yuliakazachok.corebanking.databinding.FragmentEditcommissionBinding
 import com.gmail.yuliakazachok.corebanking.features.commissions.editcommission.presentation.EditCommissionViewModel
+import com.gmail.yuliakazachok.corebanking.libraries.utils.closeKeyboard
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -43,9 +44,11 @@ class EditCommissionFragment : Fragment(), EditCommissionViewModel.EventListener
                 binding.commissionField.text.toString(),
                 binding.interestField.text.toString().toInt()
             )
+            closeKeyboard(binding)
             navController.popBackStack()
         }
         binding.buttonCancel.setOnClickListener {
+            closeKeyboard(binding)
             navController.popBackStack()
         }
     }

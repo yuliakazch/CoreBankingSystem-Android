@@ -13,7 +13,6 @@ import com.gmail.yuliakazachok.corebanking.R
 import com.gmail.yuliakazachok.corebanking.databinding.FragmentDetailcommissionBinding
 import com.gmail.yuliakazachok.corebanking.features.commissions.detailcommission.presentation.DetailCommissionViewModel
 import com.gmail.yuliakazachok.corebanking.libraries.utils.KeysArgsBundle
-import com.gmail.yuliakazachok.corebanking.shared.commissions.domain.entities.Commission
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -45,7 +44,7 @@ class DetailCommissionFragment : Fragment(), DetailCommissionViewModel.EventList
 
     override fun onStart() {
         super.onStart()
-        viewModel.getCommissionByName(arguments?.getString(KeysArgsBundle.COMMISSION_DETAIL))
+        viewModel.getCommissionById(arguments?.getInt(KeysArgsBundle.COMMISSION_DETAIL))
     }
 
     private fun setListenersButtons() {

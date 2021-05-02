@@ -5,6 +5,7 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class CommissionDto(
+    @Json(name = "id") val id: Int,
     @Json(name = "name") val name: String,
     @Json(name = "interest") val interest: Int
 )

@@ -5,5 +5,5 @@ import javax.inject.Inject
 
 class DeleteCommissionUseCase @Inject constructor(private val repository: CommissionsRepository) {
 
-    suspend operator fun invoke(name: String) = repository.deleteCommission(name)
+    suspend operator fun invoke(id: Int) = repository.deleteCommission(id)
 }

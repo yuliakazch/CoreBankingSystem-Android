@@ -7,6 +7,7 @@ import com.gmail.yuliakazachok.corebanking.libraries.core.presentation.EventsDis
 import com.gmail.yuliakazachok.corebanking.shared.commissions.domain.entities.Commission
 import com.gmail.yuliakazachok.corebanking.shared.commissions.domain.usecases.SaveCommissionUseCase
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 class EditCommissionViewModel @Inject constructor(
@@ -19,9 +20,9 @@ class EditCommissionViewModel @Inject constructor(
 
     override val eventsDispatcher = EventsDispatcher<EventListener>()
 
-    fun saveCommission(name: String, interest: Int) = viewModelScope.launch {
+    fun saveCommission(name: String, interest: Int) = runBlocking {
         try {
-            saveCommissionUseCase(Commission(name, interest))
+            saveCommissionUseCase(Commission(name = name, interest = interest))
         } catch (throwable: Throwable) {
             eventsDispatcher.dispatchEvent { showToastError() }
         }

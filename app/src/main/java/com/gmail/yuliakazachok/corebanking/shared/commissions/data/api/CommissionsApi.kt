@@ -8,12 +8,12 @@ interface CommissionsApi {
     @GET("/commission")
     suspend fun getCommissions(): List<CommissionDto>
 
-    @GET("/commission/{name}")
-    suspend fun getCommissionByName(@Path("name") name: String): CommissionDto
+    @GET("/commission/{id}")
+    suspend fun getCommissionById(@Path("id") id: Int): CommissionDto
 
     @POST("/commission")
     suspend fun saveCommission(@Body commissionDto: CommissionDto)
 
-    @DELETE("/commission/{name}")
-    suspend fun deleteCommission(@Path("name") name: String)
+    @DELETE("/commission/{id}")
+    suspend fun deleteCommission(@Path("id") id: Int)
 }

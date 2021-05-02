@@ -14,7 +14,6 @@ import com.gmail.yuliakazachok.corebanking.databinding.FragmentMaincommissionsBi
 import com.gmail.yuliakazachok.corebanking.features.commissions.maincommissions.presentation.MainCommissionsViewModel
 import com.gmail.yuliakazachok.corebanking.features.commissions.maincommissions.ui.adapter.CommissionAdapter
 import com.gmail.yuliakazachok.corebanking.libraries.utils.KeysArgsBundle
-import com.gmail.yuliakazachok.corebanking.shared.commissions.domain.entities.Commission
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -72,11 +71,11 @@ class MainCommissionsFragment : Fragment(), MainCommissionsViewModel.EventListen
         navController.navigate(R.id.action_mainCommissionsFragment_to_editCommissionsFragment)
     }
 
-    override fun goToDetailCommission(nameCommission: String) {
+    override fun goToDetailCommission(idCommission: Int) {
         navController.navigate(
             R.id.action_mainCommissionsFragment_to_detailCommissionsFragment,
             Bundle().apply {
-                putString(KeysArgsBundle.COMMISSION_DETAIL, nameCommission)
+                putInt(KeysArgsBundle.COMMISSION_DETAIL, idCommission)
             }
         )
     }
