@@ -13,6 +13,7 @@ import com.gmail.yuliakazachok.corebanking.R
 import com.gmail.yuliakazachok.corebanking.databinding.FragmentDetailcommissionBinding
 import com.gmail.yuliakazachok.corebanking.features.commissions.detailcommission.presentation.DetailCommissionViewModel
 import com.gmail.yuliakazachok.corebanking.libraries.utils.KeysArgsBundle
+import com.gmail.yuliakazachok.corebanking.shared.commissions.domain.entities.Commission
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -38,18 +39,18 @@ class DetailCommissionFragment : Fragment(), DetailCommissionViewModel.EventList
         _binding = FragmentDetailcommissionBinding.inflate(inflater, container, false)
         navController = NavHostFragment.findNavController(this)
         setListenersButtons()
-        setText()
         return binding.root
     }
 
     override fun onStart() {
         super.onStart()
         viewModel.getCommissionById(arguments?.getInt(KeysArgsBundle.COMMISSION_DETAIL))
+        setText()
     }
 
     private fun setListenersButtons() {
         binding.buttonEdit.setOnClickListener {
-            goToEditCommissions()
+            goToEditCommissions(viewModel.getCommission())
         }
         binding.buttonDelete.setOnClickListener {
             viewModel.deleteCommission()
@@ -68,8 +69,15 @@ class DetailCommissionFragment : Fragment(), DetailCommissionViewModel.EventList
         navController.popBackStack()
     }
 
-    private fun goToEditCommissions() {
-        navController.navigate(R.id.action_detailCommissionsFragment_to_editCommissionsFragment)
+    private fun goToEditCommissions(commission: Commission?) {
+        commission?.let {
+            navController.navigate(
+                R.id.action_detailCommissionsFragment_to_editCommissionsFragment,
+                Bundle().apply {
+                    putSerializable(KeysArgsBundle.COMMISSION_EDIT, it)
+                }
+            )
+        }
     }
 
     override fun showToastError() {

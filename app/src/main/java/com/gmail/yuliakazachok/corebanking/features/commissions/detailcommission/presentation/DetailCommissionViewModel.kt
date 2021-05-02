@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 class DetailCommissionViewModel @Inject constructor(
@@ -28,6 +29,8 @@ class DetailCommissionViewModel @Inject constructor(
     val commission: Flow<Commission>
         get() = _commission.filterNotNull()
 
+    fun getCommission(): Commission? = _commission.value
+
     fun getCommissionById(idCommission: Int?) = viewModelScope.launch {
         idCommission?.let {
             try {
@@ -38,7 +41,7 @@ class DetailCommissionViewModel @Inject constructor(
         }
     }
 
-    fun deleteCommission() = viewModelScope.launch {
+    fun deleteCommission() = runBlocking {
         _commission.value?.let {
             try {
                 deleteCommissionUseCase(it.id)

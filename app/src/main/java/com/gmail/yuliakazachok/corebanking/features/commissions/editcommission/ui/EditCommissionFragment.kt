@@ -11,7 +11,10 @@ import androidx.navigation.fragment.NavHostFragment
 import com.gmail.yuliakazachok.corebanking.R
 import com.gmail.yuliakazachok.corebanking.databinding.FragmentEditcommissionBinding
 import com.gmail.yuliakazachok.corebanking.features.commissions.editcommission.presentation.EditCommissionViewModel
+import com.gmail.yuliakazachok.corebanking.libraries.ext.bindTextTwoWayN
+import com.gmail.yuliakazachok.corebanking.libraries.utils.KeysArgsBundle
 import com.gmail.yuliakazachok.corebanking.libraries.utils.closeKeyboard
+import com.gmail.yuliakazachok.corebanking.shared.commissions.domain.entities.Commission
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -34,23 +37,30 @@ class EditCommissionFragment : Fragment(), EditCommissionViewModel.EventListener
     ): View {
         _binding = FragmentEditcommissionBinding.inflate(inflater, container, false)
         navController = NavHostFragment.findNavController(this)
+        viewModel.setData(arguments?.getSerializable(KeysArgsBundle.COMMISSION_EDIT) as? Commission)
+        bindData()
         setListenersButtons()
         return binding.root
     }
 
+    private fun bindData() {
+        binding.commissionField.bindTextTwoWayN(viewLifecycleOwner, viewModel.flowName)
+        binding.interestField.bindTextTwoWayN(viewLifecycleOwner, viewModel.flowInterest)
+    }
+
     private fun setListenersButtons() {
         binding.buttonSave.setOnClickListener {
-            viewModel.saveCommission(
-                binding.commissionField.text.toString(),
-                binding.interestField.text.toString().toInt()
-            )
-            closeKeyboard(binding)
-            navController.popBackStack()
+            viewModel.saveCommission()
+            goToBack()
         }
         binding.buttonCancel.setOnClickListener {
-            closeKeyboard(binding)
-            navController.popBackStack()
+            goToBack()
         }
+    }
+
+    private fun goToBack() {
+        closeKeyboard(binding)
+        navController.popBackStack()
     }
 
     override fun showToastError() {
