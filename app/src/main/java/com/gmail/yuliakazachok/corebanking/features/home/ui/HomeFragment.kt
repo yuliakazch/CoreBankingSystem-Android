@@ -38,7 +38,7 @@ class HomeFragment : Fragment() {
 
     private fun setListeners() {
         binding.tariffs.setOnClickListener {
-            // TODO: переход на тарифы
+            navController.navigate(R.id.action_homeFragment_to_mainTariffsFragment)
         }
         binding.credits.setOnClickListener {
             // TODO: переход на кредиты

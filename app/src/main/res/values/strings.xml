@@ -1,12 +1,23 @@
 <resources>
 	<string name="app_name">Банковская система</string>
+
 	<string name="tariffs">Тарифы</string>
+	<string name="tariff">Тариф</string>
+	<string name="rate">Ставка, проценты</string>
+	<string name="min_sum">Минимальная сумма, руб</string>
+	<string name="max_sum">Максимальная сумма, руб</string>
+	<string name="min_term">Минимальный срок, месяцы</string>
+	<string name="max_term">Максимальный срок, месяцы</string>
+
 	<string name="credits">Кредиты</string>
+
 	<string name="clients">Клиенты</string>
+
 	<string name="commissions">Комиссии</string>
-	<string name="message_error">Произошла ошибка!</string>
 	<string name="commission">Комиссия</string>
 	<string name="interest">Процент</string>
+
+	<string name="message_error">Произошла ошибка!</string>
 	<string name="edit">Редактировать</string>
 	<string name="delete">Удалить</string>
 	<string name="save">Сохранить</string>

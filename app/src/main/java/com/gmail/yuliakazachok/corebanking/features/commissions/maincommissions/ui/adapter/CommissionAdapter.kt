@@ -22,7 +22,7 @@ class CommissionAdapter(private val viewModel: MainCommissionsViewModel) :
 class CommissionDiffCallback : DiffUtil.ItemCallback<Commission>() {
 
     override fun areItemsTheSame(oldItem: Commission, newItem: Commission) =
-        oldItem.name == newItem.name
+        oldItem.id == newItem.id
 
     override fun areContentsTheSame(oldItem: Commission, newItem: Commission) = oldItem == newItem
 }

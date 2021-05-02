@@ -13,7 +13,38 @@
         <action
             android:id="@+id/action_homeFragment_to_mainCommissionsFragment"
             app:destination="@id/mainCommissionsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_mainTariffsFragment"
+            app:destination="@id/mainTariffsFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/mainTariffsFragment"
+        android:name="com.gmail.yuliakazachok.corebanking.features.tariffs.maintariffs.ui.MainTariffsFragment"
+        android:label="fragment_main_tariffs"
+        tools:layout="@layout/fragment_maintariffs">
+        <action
+            android:id="@+id/action_mainTariffsFragment_to_detailTariffsFragment"
+            app:destination="@id/detailTariffsFragment" />
+        <action
+            android:id="@+id/action_mainTariffsFragment_to_editTariffsFragment"
+            app:destination="@id/editTariffsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailTariffsFragment"
+        android:name="com.gmail.yuliakazachok.corebanking.features.tariffs.detailtariff.ui.DetailTariffFragment"
+        android:label="fragment_detail_tariff"
+        tools:layout="@layout/fragment_detailtariff">
+        <action
+            android:id="@+id/action_detailTariffsFragment_to_editTariffsFragment"
+            app:destination="@id/editTariffsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editTariffsFragment"
+        android:name="com.gmail.yuliakazachok.corebanking.features.tariffs.edittariff.ui.EditTariffFragment"
+        android:label="fragment_edit_tariff"
+        tools:layout="@layout/fragment_edittariff" />
+
     <fragment
         android:id="@+id/mainCommissionsFragment"
         android:name="com.gmail.yuliakazachok.corebanking.features.commissions.maincommissions.ui.MainCommissionsFragment"

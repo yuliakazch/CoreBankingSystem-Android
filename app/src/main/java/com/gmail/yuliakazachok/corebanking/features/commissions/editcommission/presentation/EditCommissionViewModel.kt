@@ -19,7 +19,7 @@ class EditCommissionViewModel @Inject constructor(
 
     override val eventsDispatcher = EventsDispatcher<EventListener>()
 
-    val flowId = MutableStateFlow<Int>(0)
+    private val flowId = MutableStateFlow<Int>(0)
     val flowName = MutableStateFlow<String?>(null)
     val flowInterest = MutableStateFlow<String?>(null)
 
