@@ -58,8 +58,8 @@ class FiltersClientsFragment : Fragment() {
                     putSerializable(
                         KeysArgsBundle.CLIENT_LIST,
                         ClientFilters(
-                            fio = binding.fioField.toString(),
-                            year = binding.yearField.toString().toInt(),
+                            fio = getFio(binding.fioField.text.toString()),
+                            year = getYear(binding.yearField.text.toString()),
                             state = getStates()
                         )
                     )
@@ -67,6 +67,10 @@ class FiltersClientsFragment : Fragment() {
             )
         }
     }
+
+    private fun getFio(stringData: String): String? = if (stringData.isBlank()) null else stringData
+
+    private fun getYear(stringData: String): Int? = if (stringData.isBlank()) null else stringData.toInt()
 
     private fun getStates(): List<Int>? {
         val list = mutableListOf<Int>()
