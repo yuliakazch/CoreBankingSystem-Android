@@ -44,7 +44,7 @@ class HomeFragment : Fragment() {
             // TODO: переход на кредиты
         }
         binding.clients.setOnClickListener {
-            // TODO: переход на клиентов
+            navController.navigate(R.id.action_homeFragment_to_filtersClientsFragment)
         }
         binding.commissions.setOnClickListener {
             navController.navigate(R.id.action_homeFragment_to_mainCommissionsFragment)

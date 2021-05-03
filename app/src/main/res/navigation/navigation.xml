@@ -11,11 +11,14 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_homeFragment_to_mainCommissionsFragment"
-            app:destination="@id/mainCommissionsFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_mainTariffsFragment"
             app:destination="@id/mainTariffsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_filtersClientsFragment"
+            app:destination="@id/filtersClientsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_mainCommissionsFragment"
+            app:destination="@id/mainCommissionsFragment" />
     </fragment>
 
     <fragment
@@ -44,6 +47,33 @@
         android:name="com.gmail.yuliakazachok.corebanking.features.tariffs.edittariff.ui.EditTariffFragment"
         android:label="fragment_edit_tariff"
         tools:layout="@layout/fragment_edittariff" />
+
+    <fragment
+        android:id="@+id/filtersClientsFragment"
+        android:name="com.gmail.yuliakazachok.corebanking.features.clients.filtersclients.ui.FiltersClientsFragment"
+        android:label="fragment_filters_clients"
+        tools:layout="@layout/fragment_filtersclients">
+        <action
+            android:id="@+id/action_filtersClientsFragment_to_listClientsFragment"
+            app:destination="@id/listClientsFragment" />
+        <action
+            android:id="@+id/action_filtersClientsFragment_to_detailClientFragment"
+            app:destination="@id/detailClientFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listClientsFragment"
+        android:name="com.gmail.yuliakazachok.corebanking.features.clients.listclients.ui.ListClientsFragment"
+        android:label="fragment_list_clients"
+        tools:layout="@layout/fragment_listclients">
+        <action
+            android:id="@+id/action_listClientsFragment_to_detailClientFragment"
+            app:destination="@id/detailClientFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailClientFragment"
+        android:name="com.gmail.yuliakazachok.corebanking.features.clients.detailclient.ui.DetailClientFragment"
+        android:label="fragment_detail_client"
+        tools:layout="@layout/fragment_detailclient" />
 
     <fragment
         android:id="@+id/mainCommissionsFragment"

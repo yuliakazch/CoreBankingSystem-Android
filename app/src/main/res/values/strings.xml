@@ -12,6 +12,17 @@
 	<string name="credits">Кредиты</string>
 
 	<string name="clients">Клиенты</string>
+	<string name="search">Поиск</string>
+	<string name="search_passport">Поиск по паспорту</string>
+	<string name="search_parameters">Поиск по параметрам</string>
+	<string name="number_passport">Номер паспорта</string>
+	<string name="fio">ФИО</string>
+	<string name="year_birth">Год рождения</string>
+	<string name="state_client">Состояние клиента</string>
+	<string name="not_tariff">Нет тарифа</string>
+	<string name="not_credit">Нет кредита / есть тариф</string>
+	<string name="yes_credit">Есть кредит</string>
+	<string name="locked">Заблокирован</string>
 
 	<string name="commissions">Комиссии</string>
 	<string name="commission">Комиссия</string>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:paddingStart="10dp"
+                android:text="@string/search_passport"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/passportField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:hint="@string/number_passport"
+                android:inputType="number"
+                android:paddingStart="10dp"
+                android:singleLine="true"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/buttonSearchPassport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/search"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:paddingStart="10dp"
+                android:text="@string/search_parameters"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/fioField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="@string/fio"
+                android:paddingStart="10dp"
+                android:singleLine="true"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/yearField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:hint="@string/year_birth"
+                android:inputType="number"
+                android:paddingStart="10dp"
+                android:singleLine="true"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:paddingStart="10dp"
+                android:text="@string/state_client"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <CheckBox
+                android:id="@+id/notTariffCheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/not_tariff"
+                android:textSize="18sp" />
+
+            <CheckBox
+                android:id="@+id/notCreditCheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/not_credit"
+                android:textSize="18sp" />
+
+            <CheckBox
+                android:id="@+id/yesCreditCheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/yes_credit"
+                android:textSize="18sp" />
+
+            <CheckBox
+                android:id="@+id/lockedCheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/locked"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/buttonSearchParams"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/search"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

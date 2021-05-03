@@ -29,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:hint="@string/rate"
+                android:inputType="number"
                 android:paddingStart="10dp"
                 android:singleLine="true"
                 android:textSize="20sp" />
@@ -39,6 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:hint="@string/min_sum"
+                android:inputType="number"
                 android:paddingStart="10dp"
                 android:singleLine="true"
                 android:textSize="20sp" />
@@ -49,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:hint="@string/max_sum"
+                android:inputType="number"
                 android:paddingStart="10dp"
                 android:singleLine="true"
                 android:textSize="20sp" />
@@ -59,6 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:hint="@string/min_term"
+                android:inputType="number"
                 android:paddingStart="10dp"
                 android:singleLine="true"
                 android:textSize="20sp" />
@@ -69,6 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:hint="@string/max_term"
+                android:inputType="number"
                 android:paddingStart="10dp"
                 android:singleLine="true"
                 android:textSize="20sp" />
