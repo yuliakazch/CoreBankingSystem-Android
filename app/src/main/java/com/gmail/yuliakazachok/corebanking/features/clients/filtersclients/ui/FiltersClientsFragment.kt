@@ -42,9 +42,9 @@ class FiltersClientsFragment : Fragment() {
             navController.navigate(
                 R.id.action_filtersClientsFragment_to_detailClientFragment,
                 Bundle().apply {
-                    putInt(
+                    putLong(
                         KeysArgsBundle.CLIENT_DETAIL,
-                        binding.passportField.text.toString().toInt()
+                        binding.passportField.text.toString().toLong()
                     )
                 }
             )

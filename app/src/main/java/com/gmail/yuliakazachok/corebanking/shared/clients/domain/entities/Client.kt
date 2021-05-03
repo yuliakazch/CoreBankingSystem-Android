@@ -1,6 +1,6 @@
 package com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities
 
-import java.util.Date
+import java.sql.Date
 
 data class Client(
     val numberPassport: Long,

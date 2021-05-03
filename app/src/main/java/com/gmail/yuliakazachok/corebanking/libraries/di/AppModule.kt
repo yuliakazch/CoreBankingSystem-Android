@@ -1,6 +1,7 @@
 package com.gmail.yuliakazachok.corebanking.libraries.di
 
 import com.gmail.yuliakazachok.corebanking.libraries.utils.Config
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,7 +29,7 @@ object AppModule {
     @Singleton
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setDateFormat("dd-MM-yyyy").create()))
         .baseUrl(Config.BASE_URL)
         .client(okHttpClient)
         .build()

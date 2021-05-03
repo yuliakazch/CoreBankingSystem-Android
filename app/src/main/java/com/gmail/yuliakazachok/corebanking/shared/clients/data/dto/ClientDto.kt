@@ -3,7 +3,7 @@ package com.gmail.yuliakazachok.corebanking.shared.clients.data.dto
 import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import java.util.Date
+import java.sql.Date
 
 @JsonClass(generateAdapter = true)
 data class ClientDto(

@@ -18,11 +18,26 @@
 	<string name="number_passport">Номер паспорта</string>
 	<string name="fio">ФИО</string>
 	<string name="year_birth">Год рождения</string>
+	<string name="date_birth">Дата рождения</string>
+	<string name="place">Место проживания</string>
 	<string name="state_client">Состояние клиента</string>
+	<string name="state">Состояние</string>
 	<string name="not_tariff">Нет тарифа</string>
 	<string name="not_credit">Нет кредита / есть тариф</string>
 	<string name="yes_credit">Есть кредит</string>
 	<string name="locked">Заблокирован</string>
+	<string name="active_credit">Текущий кредит</string>
+	<string name="give_credit">Выдать кредит</string>
+	<string name="assign_tariff">Присвоить тариф</string>
+	<string name="block">Заблокировать</string>
+	<string name="unblock">Разблокировать</string>
+	<string name="history_credits">История кредитов</string>
+
+	<string-array name="days">
+		<item>\u0020день</item>
+		<item>\u0020дня</item>
+		<item>\u0020дней</item>
+	</string-array>
 
 	<string name="commissions">Комиссии</string>
 	<string name="commission">Комиссия</string>
