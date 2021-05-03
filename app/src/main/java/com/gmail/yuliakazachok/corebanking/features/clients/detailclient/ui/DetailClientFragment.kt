@@ -12,10 +12,8 @@ import androidx.navigation.fragment.NavHostFragment
 import com.gmail.yuliakazachok.corebanking.R
 import com.gmail.yuliakazachok.corebanking.databinding.FragmentDetailclientBinding
 import com.gmail.yuliakazachok.corebanking.features.clients.detailclient.presentation.DetailClientViewModel
-import com.gmail.yuliakazachok.corebanking.features.clients.detailclient.presentation.DetailClientViewModel.Companion.STATE_NOT_CREDIT
-import com.gmail.yuliakazachok.corebanking.features.clients.detailclient.presentation.DetailClientViewModel.Companion.STATE_NOT_TARIFF
-import com.gmail.yuliakazachok.corebanking.features.clients.detailclient.presentation.DetailClientViewModel.Companion.STATE_YES_CREDIT
 import com.gmail.yuliakazachok.corebanking.libraries.utils.KeysArgsBundle
+import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.ClientStates
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -59,9 +57,9 @@ class DetailClientFragment : Fragment(), DetailClientViewModel.EventListener {
                 dateBirthValue.text = SimpleDateFormat("dd.MM.yyyy", Locale("Rus")).format(it.dateBirth)
                 placeValue.text = it.place
                 stateValue.text = when (viewModel.getStateClient(it.isCredit, it.isTariff, it.countBlockDays)) {
-                    STATE_NOT_TARIFF -> resources.getString(R.string.not_tariff)
-                    STATE_NOT_CREDIT -> resources.getString(R.string.not_credit)
-                    STATE_YES_CREDIT -> resources.getString(R.string.yes_credit)
+                    ClientStates.STATE_NOT_TARIFF -> resources.getString(R.string.not_tariff)
+                    ClientStates.STATE_NOT_CREDIT -> resources.getString(R.string.not_credit)
+                    ClientStates.STATE_YES_CREDIT -> resources.getString(R.string.yes_credit)
                     else -> resources.getString(R.string.locked)
                 }
             }

@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.gmail.yuliakazachok.corebanking.libraries.core.presentation.EventsDispatcher
 import com.gmail.yuliakazachok.corebanking.libraries.core.presentation.EventsDispatcherOwner
 import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.Client
+import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.ClientStates
 import com.gmail.yuliakazachok.corebanking.shared.clients.domain.usecases.GetClientByPassportUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,13 +16,6 @@ import javax.inject.Inject
 class DetailClientViewModel @Inject constructor(
     private val getClientByPassportUseCase: GetClientByPassportUseCase
 ) : ViewModel(), EventsDispatcherOwner<DetailClientViewModel.EventListener> {
-
-    companion object {
-        const val STATE_NOT_TARIFF = 0
-        const val STATE_NOT_CREDIT = 1
-        const val STATE_YES_CREDIT = 2
-        const val STATE_BLOCKED = 3
-    }
 
     interface EventListener {
         fun showToastError()
@@ -34,10 +28,10 @@ class DetailClientViewModel @Inject constructor(
         get() = _client.filterNotNull()
 
     fun getStateClient(isCredit: Boolean, isTariff: Boolean, countBlockDays: Int) = when {
-        countBlockDays != 0 -> STATE_BLOCKED
-        isTariff && !isCredit -> STATE_NOT_CREDIT
-        isCredit -> STATE_YES_CREDIT
-        else -> STATE_NOT_TARIFF
+        countBlockDays != 0 -> ClientStates.STATE_BLOCKED
+        isTariff && !isCredit -> ClientStates.STATE_NOT_CREDIT
+        isCredit -> ClientStates.STATE_YES_CREDIT
+        else -> ClientStates.STATE_NOT_TARIFF
     }
 
     fun getClient(numberPassport: Long?) = viewModelScope.launch {

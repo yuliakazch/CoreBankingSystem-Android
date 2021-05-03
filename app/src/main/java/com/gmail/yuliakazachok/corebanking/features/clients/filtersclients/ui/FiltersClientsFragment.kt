@@ -11,6 +11,8 @@ import com.gmail.yuliakazachok.corebanking.R
 import com.gmail.yuliakazachok.corebanking.databinding.FragmentFiltersclientsBinding
 import com.gmail.yuliakazachok.corebanking.features.clients.filtersclients.presentation.FiltersClientsViewModel
 import com.gmail.yuliakazachok.corebanking.libraries.utils.KeysArgsBundle
+import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.ClientFilters
+import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.ClientStates
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -50,8 +52,37 @@ class FiltersClientsFragment : Fragment() {
             )
         }
         binding.buttonSearchParams.setOnClickListener {
-            // TODO: передача параметров и переход на список клиентов
+            navController.navigate(
+                R.id.action_filtersClientsFragment_to_listClientsFragment,
+                Bundle().apply {
+                    putSerializable(
+                        KeysArgsBundle.CLIENT_LIST,
+                        ClientFilters(
+                            fio = binding.fioField.toString(),
+                            year = binding.yearField.toString().toInt(),
+                            state = getStates()
+                        )
+                    )
+                }
+            )
         }
+    }
+
+    private fun getStates(): List<Int>? {
+        val list = mutableListOf<Int>()
+        if (binding.notTariffCheckBox.isChecked) {
+            list.add(ClientStates.STATE_NOT_TARIFF)
+        }
+        if (binding.notCreditCheckBox.isChecked) {
+            list.add(ClientStates.STATE_NOT_CREDIT)
+        }
+        if (binding.yesCreditCheckBox.isChecked) {
+            list.add(ClientStates.STATE_YES_CREDIT)
+        }
+        if (binding.lockedCheckBox.isChecked) {
+            list.add(ClientStates.STATE_BLOCKED)
+        }
+        return if (list.isEmpty()) null else list
     }
 
     override fun onDestroyView() {
