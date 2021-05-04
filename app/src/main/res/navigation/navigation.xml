@@ -73,7 +73,16 @@
         android:id="@+id/detailClientFragment"
         android:name="com.gmail.yuliakazachok.corebanking.features.clients.detailclient.ui.DetailClientFragment"
         android:label="fragment_detail_client"
-        tools:layout="@layout/fragment_detailclient" />
+        tools:layout="@layout/fragment_detailclient" >
+        <action
+            android:id="@+id/action_detailClientFragment_to_blockClientFragment"
+            app:destination="@id/blockClientFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/blockClientFragment"
+        android:name="com.gmail.yuliakazachok.corebanking.features.clients.blockclient.ui.BlockClientFragment"
+        android:label="fragment_block_client"
+        tools:layout="@layout/fragment_blockclient" />
 
     <fragment
         android:id="@+id/mainCommissionsFragment"

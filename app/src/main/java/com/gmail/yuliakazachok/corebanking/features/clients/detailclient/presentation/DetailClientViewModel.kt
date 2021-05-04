@@ -27,6 +27,8 @@ class DetailClientViewModel @Inject constructor(
     val client: Flow<Client>
         get() = _client.filterNotNull()
 
+    fun getNumberPassport() = _client.value?.numberPassport ?: 0
+
     fun getClient(numberPassport: Long?) = viewModelScope.launch {
         numberPassport?.let {
             try {

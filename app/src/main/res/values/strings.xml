@@ -32,6 +32,8 @@
 	<string name="block">Заблокировать</string>
 	<string name="unblock">Разблокировать</string>
 	<string name="history_credits">История кредитов</string>
+	<string name="question_count_block_days">На сколько дней заблокировать клиента?</string>
+	<string name="count_days">Количество дней</string>
 
 	<string-array name="days">
 		<item>\u0020день</item>

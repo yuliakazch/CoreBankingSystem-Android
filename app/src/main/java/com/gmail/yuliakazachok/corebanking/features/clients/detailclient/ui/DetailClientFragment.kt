@@ -42,6 +42,7 @@ class DetailClientFragment : Fragment(), DetailClientViewModel.EventListener {
         _binding = FragmentDetailclientBinding.inflate(inflater, container, false)
         navController = NavHostFragment.findNavController(this)
         viewModel.eventsDispatcher.bind(viewLifecycleOwner, this@DetailClientFragment)
+        setListeners()
         return binding.root
     }
 
@@ -49,6 +50,17 @@ class DetailClientFragment : Fragment(), DetailClientViewModel.EventListener {
         super.onStart()
         viewModel.getClient(arguments?.getLong(KeysArgsBundle.CLIENT_DETAIL))
         setTextAndButtons()
+    }
+
+    private fun setListeners() {
+        binding.blockButton.setOnClickListener {
+            navController.navigate(
+                R.id.action_detailClientFragment_to_blockClientFragment,
+                Bundle().apply {
+                    putLong(KeysArgsBundle.CLIENT_BLOCK, viewModel.getNumberPassport())
+                }
+            )
+        }
     }
 
     private fun setTextAndButtons() {
@@ -66,11 +78,12 @@ class DetailClientFragment : Fragment(), DetailClientViewModel.EventListener {
                     else -> resources.getString(R.string.locked) + " на " + it.countBlockDays + " дней"
                 }
                 creditButton.isEnabled = it.state != ClientStates.STATE_NOT_TARIFF
-                creditButton.text = if (it.state == ClientStates.STATE_NOT_TARIFF || it.state == ClientStates.STATE_NOT_CREDIT) {
-                    resources.getString(R.string.give_credit)
-                } else {
-                    resources.getString(R.string.active_credit)
-                }
+                creditButton.text =
+                    if (it.state == ClientStates.STATE_NOT_TARIFF || it.state == ClientStates.STATE_NOT_CREDIT) {
+                        resources.getString(R.string.give_credit)
+                    } else {
+                        resources.getString(R.string.active_credit)
+                    }
             }
         }.launchIn(viewLifecycleOwner.lifecycle.coroutineScope)
     }
