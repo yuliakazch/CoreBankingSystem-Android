@@ -16,6 +16,10 @@ class ClientsRepositoryImpl @Inject constructor(
     override suspend fun getByPassport(numberPassport: Long): Client =
         dataSource.getClientByPassport(numberPassport).toEntity()
 
+    override suspend fun blockClient(number: Long, days: Int) {
+        dataSource.blockClient(number, days)
+    }
+
     override suspend fun searchClients(filters: ClientFilters): List<Client> =
         dataSource.searchClients(filters.toDto()).toListEntity()
 }

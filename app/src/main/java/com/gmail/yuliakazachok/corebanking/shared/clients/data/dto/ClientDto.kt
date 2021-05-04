@@ -11,5 +11,6 @@ data class ClientDto(
     @Json(name = "fio") val fio: String,
     @Json(name = "date_birth") @SerializedName("date_birth") val dateBirth: Date,
     @Json(name = "place") val place: String,
-    @Json(name = "state")val state: Int
+    @Json(name = "state")val state: Int,
+    @Json(name = "count_block_days") @SerializedName("count_block_days") val countBlockDays: Int
 )

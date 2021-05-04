@@ -7,5 +7,7 @@ interface ClientsDataSource {
 
     suspend fun getClientByPassport(numberPassport: Long): ClientDto
 
+    suspend fun blockClient(number: Long, days: Int)
+
     suspend fun searchClients(filters: ClientFiltersDto): List<ClientDto>
 }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.coroutineScope
 import androidx.navigation.NavController
@@ -47,21 +48,28 @@ class DetailClientFragment : Fragment(), DetailClientViewModel.EventListener {
     override fun onStart() {
         super.onStart()
         viewModel.getClient(arguments?.getLong(KeysArgsBundle.CLIENT_DETAIL))
-        setText()
+        setTextAndButtons()
     }
 
-    private fun setText() {
+    private fun setTextAndButtons() {
         viewModel.client.onEach {
             with(binding) {
                 fioValue.text = it.fio
                 passportValue.text = it.numberPassport.toString()
-                dateBirthValue.text = SimpleDateFormat("dd.MM.yyyy", Locale("Rus")).format(it.dateBirth)
+                dateBirthValue.text =
+                    SimpleDateFormat("dd.MM.yyyy", Locale("Rus")).format(it.dateBirth)
                 placeValue.text = it.place
                 stateValue.text = when (it.state) {
                     ClientStates.STATE_NOT_TARIFF -> resources.getString(R.string.not_tariff)
                     ClientStates.STATE_NOT_CREDIT -> resources.getString(R.string.not_credit)
                     ClientStates.STATE_YES_CREDIT -> resources.getString(R.string.yes_credit)
-                    else -> resources.getString(R.string.locked)
+                    else -> resources.getString(R.string.locked) + " на " + it.countBlockDays + " дней"
+                }
+                creditButton.isEnabled = it.state != ClientStates.STATE_NOT_TARIFF
+                creditButton.text = if (it.state == ClientStates.STATE_NOT_TARIFF || it.state == ClientStates.STATE_NOT_CREDIT) {
+                    resources.getString(R.string.give_credit)
+                } else {
+                    resources.getString(R.string.active_credit)
                 }
             }
         }.launchIn(viewLifecycleOwner.lifecycle.coroutineScope)

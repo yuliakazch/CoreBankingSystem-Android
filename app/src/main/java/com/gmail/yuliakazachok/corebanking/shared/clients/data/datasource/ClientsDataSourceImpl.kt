@@ -12,6 +12,10 @@ class ClientsDataSourceImpl @Inject constructor(
     override suspend fun getClientByPassport(numberPassport: Long): ClientDto =
         api.getClientByPassport(numberPassport)
 
+    override suspend fun blockClient(number: Long, days: Int) {
+        api.blockClient(number, days)
+    }
+
     override suspend fun searchClients(filters: ClientFiltersDto): List<ClientDto> =
         api.searchClients(filters)
 }
