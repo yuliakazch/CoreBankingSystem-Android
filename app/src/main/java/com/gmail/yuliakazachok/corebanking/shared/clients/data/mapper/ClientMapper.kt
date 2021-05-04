@@ -5,11 +5,11 @@ import com.gmail.yuliakazachok.corebanking.shared.clients.data.dto.ClientFilters
 import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.Client
 import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.ClientFilters
 
-fun Client.toDto() = ClientDto(numberPassport, fio, dateBirth, place, isCredit, isTariff, countBlockDays)
+fun Client.toDto() = ClientDto(numberPassport, fio, dateBirth, place, state)
 
 fun List<Client>.toListDto() = map { it.toDto() }
 
-fun ClientDto.toEntity() = Client(numberPassport, fio, dateBirth, place, isCredit, isTariff, countBlockDays)
+fun ClientDto.toEntity() = Client(numberPassport, fio, dateBirth, place, state)
 
 fun List<ClientDto>.toListEntity() = map { it.toEntity() }
 

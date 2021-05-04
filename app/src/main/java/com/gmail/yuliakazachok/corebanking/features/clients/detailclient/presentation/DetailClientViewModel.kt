@@ -27,13 +27,6 @@ class DetailClientViewModel @Inject constructor(
     val client: Flow<Client>
         get() = _client.filterNotNull()
 
-    fun getStateClient(isCredit: Boolean, isTariff: Boolean, countBlockDays: Int) = when {
-        countBlockDays != 0 -> ClientStates.STATE_BLOCKED
-        isTariff && !isCredit -> ClientStates.STATE_NOT_CREDIT
-        isCredit -> ClientStates.STATE_YES_CREDIT
-        else -> ClientStates.STATE_NOT_TARIFF
-    }
-
     fun getClient(numberPassport: Long?) = viewModelScope.launch {
         numberPassport?.let {
             try {

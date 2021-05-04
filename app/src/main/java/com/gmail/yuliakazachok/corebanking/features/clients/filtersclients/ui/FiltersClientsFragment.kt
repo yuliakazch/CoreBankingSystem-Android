@@ -57,36 +57,18 @@ class FiltersClientsFragment : Fragment() {
                 Bundle().apply {
                     putSerializable(
                         KeysArgsBundle.CLIENT_LIST,
-                        ClientFilters(
-                            fio = getFio(binding.fioField.text.toString()),
-                            year = getYear(binding.yearField.text.toString()),
-                            state = getStates()
+                        viewModel.getClientFilters(
+                            binding.fioField.text.toString(),
+                            binding.yearField.text.toString(),
+                            binding.notTariffCheckBox.isChecked,
+                            binding.notCreditCheckBox.isChecked,
+                            binding.yesCreditCheckBox.isChecked,
+                            binding.lockedCheckBox.isChecked
                         )
                     )
                 }
             )
         }
-    }
-
-    private fun getFio(stringData: String): String? = if (stringData.isBlank()) null else stringData
-
-    private fun getYear(stringData: String): Int? = if (stringData.isBlank()) null else stringData.toInt()
-
-    private fun getStates(): List<Int>? {
-        val list = mutableListOf<Int>()
-        if (binding.notTariffCheckBox.isChecked) {
-            list.add(ClientStates.STATE_NOT_TARIFF)
-        }
-        if (binding.notCreditCheckBox.isChecked) {
-            list.add(ClientStates.STATE_NOT_CREDIT)
-        }
-        if (binding.yesCreditCheckBox.isChecked) {
-            list.add(ClientStates.STATE_YES_CREDIT)
-        }
-        if (binding.lockedCheckBox.isChecked) {
-            list.add(ClientStates.STATE_BLOCKED)
-        }
-        return if (list.isEmpty()) null else list
     }
 
     override fun onDestroyView() {

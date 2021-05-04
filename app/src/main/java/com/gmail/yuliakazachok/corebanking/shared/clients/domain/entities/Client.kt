@@ -7,7 +7,5 @@ data class Client(
     val fio: String,
     val dateBirth: Date,
     val place: String,
-    val isCredit: Boolean,
-    val isTariff: Boolean,
-    val countBlockDays: Int
+    val state: Int
 )

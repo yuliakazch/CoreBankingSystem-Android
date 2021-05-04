@@ -40,6 +40,7 @@ class DetailClientFragment : Fragment(), DetailClientViewModel.EventListener {
     ): View {
         _binding = FragmentDetailclientBinding.inflate(inflater, container, false)
         navController = NavHostFragment.findNavController(this)
+        viewModel.eventsDispatcher.bind(viewLifecycleOwner, this@DetailClientFragment)
         return binding.root
     }
 
@@ -56,7 +57,7 @@ class DetailClientFragment : Fragment(), DetailClientViewModel.EventListener {
                 passportValue.text = it.numberPassport.toString()
                 dateBirthValue.text = SimpleDateFormat("dd.MM.yyyy", Locale("Rus")).format(it.dateBirth)
                 placeValue.text = it.place
-                stateValue.text = when (viewModel.getStateClient(it.isCredit, it.isTariff, it.countBlockDays)) {
+                stateValue.text = when (it.state) {
                     ClientStates.STATE_NOT_TARIFF -> resources.getString(R.string.not_tariff)
                     ClientStates.STATE_NOT_CREDIT -> resources.getString(R.string.not_credit)
                     ClientStates.STATE_YES_CREDIT -> resources.getString(R.string.yes_credit)

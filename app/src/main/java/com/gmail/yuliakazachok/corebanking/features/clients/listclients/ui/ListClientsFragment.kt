@@ -41,13 +41,22 @@ class ListClientsFragment : Fragment(), ListClientsViewModel.EventListener {
     ): View {
         _binding = FragmentListclientsBinding.inflate(inflater, container, false)
         navController = NavHostFragment.findNavController(this)
+        viewModel.eventsDispatcher.bind(viewLifecycleOwner, this@ListClientsFragment)
         setAdapter()
+        setListeners()
         return binding.root
     }
 
     override fun onStart() {
         super.onStart()
         viewModel.getClients(arguments?.getSerializable(KeysArgsBundle.CLIENT_LIST) as? ClientFilters)
+    }
+
+    private fun setListeners() {
+        binding.swipeRefresh.setOnRefreshListener {
+            viewModel.getClients(arguments?.getSerializable(KeysArgsBundle.CLIENT_LIST) as? ClientFilters)
+            binding.swipeRefresh.isRefreshing = false
+        }
     }
 
     private fun setAdapter() {

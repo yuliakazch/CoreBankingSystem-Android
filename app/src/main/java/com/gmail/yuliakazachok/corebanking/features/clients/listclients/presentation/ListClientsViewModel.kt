@@ -6,7 +6,6 @@ import com.gmail.yuliakazachok.corebanking.libraries.core.presentation.EventsDis
 import com.gmail.yuliakazachok.corebanking.libraries.core.presentation.EventsDispatcherOwner
 import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.Client
 import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.ClientFilters
-import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.ClientStates
 import com.gmail.yuliakazachok.corebanking.shared.clients.domain.usecases.SearchClientsUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -37,13 +36,6 @@ class ListClientsViewModel @Inject constructor(
                 eventsDispatcher.dispatchEvent { showToastError() }
             }
         }
-    }
-
-    fun getStateClient(isCredit: Boolean, isTariff: Boolean, countBlockDays: Int) = when {
-        countBlockDays != 0 -> ClientStates.STATE_BLOCKED
-        isTariff && !isCredit -> ClientStates.STATE_NOT_CREDIT
-        isCredit -> ClientStates.STATE_YES_CREDIT
-        else -> ClientStates.STATE_NOT_TARIFF
     }
 
     fun goToDetail(numberPassport: Long) {

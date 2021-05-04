@@ -1,6 +1,7 @@
 package com.gmail.yuliakazachok.corebanking.features.clients.listclients.ui.adapter
 
 import android.view.ViewGroup
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.gmail.yuliakazachok.corebanking.features.clients.listclients.presentation.ListClientsViewModel
@@ -12,10 +13,10 @@ class ClientAdapter(private val viewModel: ListClientsViewModel) :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ClientViewHolder = ClientViewHolder.from(parent)
+    ): ClientViewHolder = ClientViewHolder.from(parent, viewModel)
 
     override fun onBindViewHolder(holder: ClientViewHolder, position: Int) {
-        holder.bind(getItem(position), viewModel)
+        holder.bind(getItem(position))
     }
 }
 
