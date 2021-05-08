@@ -18,6 +18,12 @@ class TariffsRepositoryImpl @Inject constructor(
     override suspend fun getTariffById(id: Int): Tariff =
         dataSource.getTariffById(id).toEntity()
 
+    override suspend fun getTariffsByPassport(numberPassport: Long): List<Tariff> =
+        dataSource.getTariffsByPassport(numberPassport).toListEntity()
+
+    override suspend fun getTariffsNotByPassport(numberPassport: Long): List<Tariff> =
+        dataSource.getTariffsNotByPassport(numberPassport).toListEntity()
+
     override suspend fun saveTariff(tariff: Tariff) {
         dataSource.saveTariff(tariff.toDto())
     }

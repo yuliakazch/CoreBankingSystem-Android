@@ -112,11 +112,11 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/assignTariffButton"
+                android:id="@+id/tariffsButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:text="@string/assign_tariff"
+                android:text="@string/tariffs"
                 android:textSize="16sp" />
 
             <Button

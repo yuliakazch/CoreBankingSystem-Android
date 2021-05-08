@@ -11,6 +11,12 @@ interface TariffsApi {
     @GET("/tariff/{id}")
     suspend fun getTariffById(@Path("id") id: Int): TariffDto
 
+    @GET("/tariff/availabletariff/{numberPassport}")
+    suspend fun getTariffsByPassport(@Path("numberPassport") numberPassport: Long): List<TariffDto>
+
+    @GET("/tariff/availabletariff/{numberPassport}/not")
+    suspend fun getTariffsNotByPassport(@Path("numberPassport") numberPassport: Long): List<TariffDto>
+
     @POST("/tariff")
     suspend fun saveTariff(@Body tariffDto: TariffDto)
 

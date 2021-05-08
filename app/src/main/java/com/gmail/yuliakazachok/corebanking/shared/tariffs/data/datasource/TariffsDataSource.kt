@@ -8,6 +8,10 @@ interface TariffsDataSource {
 
     suspend fun getTariffById(id: Int): TariffDto
 
+    suspend fun getTariffsByPassport(numberPassport: Long): List<TariffDto>
+
+    suspend fun getTariffsNotByPassport(numberPassport: Long): List<TariffDto>
+
     suspend fun saveTariff(tariffDto: TariffDto)
 
     suspend fun deleteTariff(id: Int)

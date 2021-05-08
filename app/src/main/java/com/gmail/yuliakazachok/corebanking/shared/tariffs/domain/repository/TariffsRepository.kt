@@ -8,6 +8,10 @@ interface TariffsRepository {
 
     suspend fun getTariffById(id: Int): Tariff
 
+    suspend fun getTariffsByPassport(numberPassport: Long): List<Tariff>
+
+    suspend fun getTariffsNotByPassport(numberPassport: Long): List<Tariff>
+
     suspend fun saveTariff(tariff: Tariff)
 
     suspend fun deleteTariff(id: Int)

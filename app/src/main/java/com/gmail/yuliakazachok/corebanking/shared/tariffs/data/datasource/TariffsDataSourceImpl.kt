@@ -14,6 +14,12 @@ class TariffsDataSourceImpl @Inject constructor(
     override suspend fun getTariffById(id: Int): TariffDto =
         api.getTariffById(id)
 
+    override suspend fun getTariffsByPassport(numberPassport: Long): List<TariffDto> =
+        api.getTariffsByPassport(numberPassport)
+
+    override suspend fun getTariffsNotByPassport(numberPassport: Long): List<TariffDto> =
+        api.getTariffsNotByPassport(numberPassport)
+
     override suspend fun saveTariff(tariffDto: TariffDto) {
         api.saveTariff(tariffDto)
     }
