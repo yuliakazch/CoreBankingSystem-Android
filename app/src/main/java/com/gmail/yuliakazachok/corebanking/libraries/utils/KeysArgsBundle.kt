@@ -4,6 +4,10 @@ object KeysArgsBundle {
 
     const val TARIFF_DETAIL = "TARIFF_DETAIL"
     const val TARIFF_EDIT = "TARIFF_EDIT"
+    const val TARIFF_MODE = "TARIFF_MODE"
+    const val TARIFF_MODE_ALL = "TARIFF_MODE_ALL"
+    const val TARIFF_MODE_CLIENT = "TARIFF_MODE_CLIENT"
+    const val TARIFF_CLIENT = "TARIFF_CLIENT"
 
     const val CLIENT_DETAIL = "CLIENT_DETAIL"
     const val CLIENT_LIST = "CLIENT_LIST"

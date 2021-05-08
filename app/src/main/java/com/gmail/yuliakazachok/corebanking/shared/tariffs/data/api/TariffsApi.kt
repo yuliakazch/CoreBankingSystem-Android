@@ -1,5 +1,6 @@
 package com.gmail.yuliakazachok.corebanking.shared.tariffs.data.api
 
+import com.gmail.yuliakazachok.corebanking.shared.tariffs.data.dto.AvailableTariffDto
 import com.gmail.yuliakazachok.corebanking.shared.tariffs.data.dto.TariffDto
 import retrofit2.http.*
 
@@ -19,6 +20,9 @@ interface TariffsApi {
 
     @POST("/tariff")
     suspend fun saveTariff(@Body tariffDto: TariffDto)
+
+    @POST("/tariff/availabletariff")
+    suspend fun saveAvailableTariff(@Body availableTariffDto: AvailableTariffDto)
 
     @DELETE("/tariff/{id}")
     suspend fun deleteTariff(@Path("id") id: Int)

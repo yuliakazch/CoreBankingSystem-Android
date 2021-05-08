@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.coroutineScope
 import androidx.navigation.NavController
@@ -53,13 +52,24 @@ class DetailClientFragment : Fragment(), DetailClientViewModel.EventListener {
     }
 
     private fun setListeners() {
-        binding.blockButton.setOnClickListener {
-            navController.navigate(
-                R.id.action_detailClientFragment_to_blockClientFragment,
-                Bundle().apply {
-                    putLong(KeysArgsBundle.CLIENT_BLOCK, viewModel.getNumberPassport())
-                }
-            )
+        with(binding) {
+            blockButton.setOnClickListener {
+                navController.navigate(
+                    R.id.action_detailClientFragment_to_blockClientFragment,
+                    Bundle().apply {
+                        putLong(KeysArgsBundle.CLIENT_BLOCK, viewModel.getNumberPassport())
+                    }
+                )
+            }
+            tariffsButton.setOnClickListener {
+                navController.navigate(
+                    R.id.action_detailClientFragment_to_mainTariffsFragment,
+                    Bundle().apply {
+                        putString(KeysArgsBundle.TARIFF_MODE, KeysArgsBundle.TARIFF_MODE_CLIENT)
+                        putLong(KeysArgsBundle.TARIFF_CLIENT, viewModel.getNumberPassport())
+                    }
+                )
+            }
         }
     }
 
@@ -84,6 +94,7 @@ class DetailClientFragment : Fragment(), DetailClientViewModel.EventListener {
                     } else {
                         resources.getString(R.string.active_credit)
                     }
+                blockButton.isEnabled = it.state == ClientStates.STATE_YES_CREDIT
             }
         }.launchIn(viewLifecycleOwner.lifecycle.coroutineScope)
     }

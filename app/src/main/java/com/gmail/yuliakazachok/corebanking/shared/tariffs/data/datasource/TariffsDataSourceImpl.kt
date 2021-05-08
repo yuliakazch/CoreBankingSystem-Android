@@ -1,6 +1,7 @@
 package com.gmail.yuliakazachok.corebanking.shared.tariffs.data.datasource
 
 import com.gmail.yuliakazachok.corebanking.shared.tariffs.data.api.TariffsApi
+import com.gmail.yuliakazachok.corebanking.shared.tariffs.data.dto.AvailableTariffDto
 import com.gmail.yuliakazachok.corebanking.shared.tariffs.data.dto.TariffDto
 import javax.inject.Inject
 
@@ -22,6 +23,10 @@ class TariffsDataSourceImpl @Inject constructor(
 
     override suspend fun saveTariff(tariffDto: TariffDto) {
         api.saveTariff(tariffDto)
+    }
+
+    override suspend fun saveAvailableTariff(availableTariffDto: AvailableTariffDto) {
+        api.saveAvailableTariff(availableTariffDto)
     }
 
     override suspend fun deleteTariff(id: Int) {

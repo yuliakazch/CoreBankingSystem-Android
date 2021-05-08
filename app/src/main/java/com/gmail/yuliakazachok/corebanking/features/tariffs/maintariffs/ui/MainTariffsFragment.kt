@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.coroutineScope
 import androidx.navigation.NavController
@@ -39,14 +41,68 @@ class MainTariffsFragment : Fragment(), MainTariffsViewModel.EventListener {
         _binding = FragmentMaintariffsBinding.inflate(inflater, container, false)
         navController = NavHostFragment.findNavController(this)
         viewModel.eventsDispatcher.bind(viewLifecycleOwner, this@MainTariffsFragment)
+        viewModel.numberPassport.value = arguments?.getLong(KeysArgsBundle.TARIFF_CLIENT)
         setAdapter()
-        setListeners()
+        setMode()
         return binding.root
     }
 
     override fun onStart() {
         super.onStart()
-        viewModel.getTariffs()
+        getData()
+    }
+
+    private fun setMode() {
+        viewModel.mode.value = arguments?.getString(KeysArgsBundle.TARIFF_MODE)
+        if (viewModel.mode.value == KeysArgsBundle.TARIFF_MODE_CLIENT) {
+            setModeClient()
+        } else {
+            setModeAll()
+        }
+    }
+
+    private fun setModeAll() {
+        with(binding) {
+            tariffsClientText.isVisible = false
+            giveTariffText.isVisible = false
+            tariffsRadioGroup.isVisible = false
+            giveTariffButton.isVisible = false
+            swipeRefresh.setOnRefreshListener {
+                viewModel.getTariffs()
+                binding.swipeRefresh.isRefreshing = false
+            }
+            addButton.setOnClickListener {
+                goToCreateTariff()
+            }
+        }
+    }
+
+    private fun setModeClient() {
+        with(binding) {
+            addButton.isVisible = false
+            swipeRefresh.setOnRefreshListener {
+                binding.swipeRefresh.isRefreshing = false
+            }
+            viewModel.listTariffsNotClient.onEach { list ->
+                this@MainTariffsFragment.context?.let { context ->
+                    list.forEach {
+                        val radioButton = RadioButton(context)
+                        radioButton.text = it.name
+                        radioButton.id = it.id
+                        tariffsRadioGroup.addView(radioButton)
+                    }
+                }
+            }.launchIn(viewLifecycleOwner.lifecycle.coroutineScope)
+            giveTariffButton.setOnClickListener {
+                viewModel.saveAvailableTariff(tariffsRadioGroup.checkedRadioButtonId)
+                navController.popBackStack()
+            }
+            viewModel.listTariff.onEach {
+                if (viewModel.isEmptyListTariffs()) {
+                    tariffsClientText.isVisible = false
+                }
+            }.launchIn(viewLifecycleOwner.lifecycle.coroutineScope)
+        }
     }
 
     private fun setAdapter() {
@@ -57,17 +113,15 @@ class MainTariffsFragment : Fragment(), MainTariffsViewModel.EventListener {
         }.launchIn(viewLifecycleOwner.lifecycle.coroutineScope)
     }
 
-    private fun setListeners() {
-        binding.swipeRefresh.setOnRefreshListener {
+    private fun getData() {
+        if (viewModel.mode.value == KeysArgsBundle.TARIFF_MODE_CLIENT) {
+            viewModel.getClientTariffs()
+        } else {
             viewModel.getTariffs()
-            binding.swipeRefresh.isRefreshing = false
-        }
-        binding.addButton.setOnClickListener {
-            goToCreateTariff()
         }
     }
 
-    fun goToCreateTariff() {
+    private fun goToCreateTariff() {
         navController.navigate(R.id.action_mainTariffsFragment_to_editTariffsFragment)
     }
 

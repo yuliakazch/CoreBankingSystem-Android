@@ -13,9 +13,7 @@ import com.gmail.yuliakazachok.corebanking.R
 import com.gmail.yuliakazachok.corebanking.databinding.FragmentListclientsBinding
 import com.gmail.yuliakazachok.corebanking.features.clients.listclients.presentation.ListClientsViewModel
 import com.gmail.yuliakazachok.corebanking.features.clients.listclients.ui.adapter.ClientAdapter
-import com.gmail.yuliakazachok.corebanking.features.commissions.maincommissions.ui.adapter.CommissionAdapter
 import com.gmail.yuliakazachok.corebanking.libraries.utils.KeysArgsBundle
-import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.Client
 import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.ClientFilters
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn

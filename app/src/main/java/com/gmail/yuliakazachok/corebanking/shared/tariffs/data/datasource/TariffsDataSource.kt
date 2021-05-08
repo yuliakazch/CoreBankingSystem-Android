@@ -1,5 +1,6 @@
 package com.gmail.yuliakazachok.corebanking.shared.tariffs.data.datasource
 
+import com.gmail.yuliakazachok.corebanking.shared.tariffs.data.dto.AvailableTariffDto
 import com.gmail.yuliakazachok.corebanking.shared.tariffs.data.dto.TariffDto
 
 interface TariffsDataSource {
@@ -13,6 +14,8 @@ interface TariffsDataSource {
     suspend fun getTariffsNotByPassport(numberPassport: Long): List<TariffDto>
 
     suspend fun saveTariff(tariffDto: TariffDto)
+
+    suspend fun saveAvailableTariff(availableTariffDto: AvailableTariffDto)
 
     suspend fun deleteTariff(id: Int)
 }

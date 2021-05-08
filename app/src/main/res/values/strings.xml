@@ -8,6 +8,9 @@
 	<string name="max_sum">Максимальная сумма, руб</string>
 	<string name="min_term">Минимальный срок, месяцы</string>
 	<string name="max_term">Максимальный срок, месяцы</string>
+	<string name="client_tariffs">Тарифы клиента</string>
+	<string name="give_tariff_client">Присвоить новый тариф клиенту</string>
+	<string name="input_name_tariff">Введите название тарифа</string>
 
 	<string name="credits">Кредиты</string>
 

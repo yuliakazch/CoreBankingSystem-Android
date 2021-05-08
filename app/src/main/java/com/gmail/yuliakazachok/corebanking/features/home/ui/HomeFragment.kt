@@ -10,6 +10,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.gmail.yuliakazachok.corebanking.R
 import com.gmail.yuliakazachok.corebanking.databinding.FragmentHomeBinding
 import com.gmail.yuliakazachok.corebanking.features.home.presentation.HomeViewModel
+import com.gmail.yuliakazachok.corebanking.libraries.utils.KeysArgsBundle
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -38,7 +39,12 @@ class HomeFragment : Fragment() {
 
     private fun setListeners() {
         binding.tariffs.setOnClickListener {
-            navController.navigate(R.id.action_homeFragment_to_mainTariffsFragment)
+            navController.navigate(
+                R.id.action_homeFragment_to_mainTariffsFragment,
+                Bundle().apply {
+                    putString(KeysArgsBundle.TARIFF_MODE, KeysArgsBundle.TARIFF_MODE_ALL)
+                }
+            )
         }
         binding.credits.setOnClickListener {
             // TODO: переход на кредиты

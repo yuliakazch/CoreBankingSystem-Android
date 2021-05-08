@@ -1,5 +1,6 @@
 package com.gmail.yuliakazachok.corebanking.shared.tariffs.domain.repository
 
+import com.gmail.yuliakazachok.corebanking.shared.tariffs.domain.entities.AvailableTariff
 import com.gmail.yuliakazachok.corebanking.shared.tariffs.domain.entities.Tariff
 
 interface TariffsRepository {
@@ -13,6 +14,8 @@ interface TariffsRepository {
     suspend fun getTariffsNotByPassport(numberPassport: Long): List<Tariff>
 
     suspend fun saveTariff(tariff: Tariff)
+
+    suspend fun saveAvailableTariff(availableTariff: AvailableTariff)
 
     suspend fun deleteTariff(id: Int)
 }
