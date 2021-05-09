@@ -13,8 +13,18 @@
 	<string name="input_name_tariff">Введите название тарифа</string>
 
 	<string name="credits">Кредиты</string>
+	<string name="date_open">Дата открытия</string>
+	<string name="term">Срок, месяцы</string>
+	<string name="sum">Сумма, руб</string>
+	<string name="payment_schedule">График платежей</string>
+	<string name="payments">Платежи</string>
+	<string name="make_payment">Внести платеж</string>
+	<string name="close">Закрыт</string>
+	<string name="open">Открыт</string>
+	<string name="expired">Просрочен</string>
 
 	<string name="clients">Клиенты</string>
+	<string name="client">Клиент</string>
 	<string name="search">Поиск</string>
 	<string name="search_passport">Поиск по паспорту</string>
 	<string name="search_parameters">Поиск по параметрам</string>

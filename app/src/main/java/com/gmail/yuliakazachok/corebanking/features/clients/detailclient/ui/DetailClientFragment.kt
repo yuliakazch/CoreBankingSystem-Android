@@ -53,6 +53,14 @@ class DetailClientFragment : Fragment(), DetailClientViewModel.EventListener {
 
     private fun setListeners() {
         with(binding) {
+            creditButton.setOnClickListener {
+                navController.navigate(
+                    R.id.action_detailClientFragment_to_detailCreditFragment,
+                    Bundle().apply {
+                        putLong(KeysArgsBundle.CREDIT_DETAIL_PASSPORT, viewModel.getNumberPassport())
+                    }
+                )
+            }
             blockButton.setOnClickListener {
                 navController.navigate(
                     R.id.action_detailClientFragment_to_blockClientFragment,

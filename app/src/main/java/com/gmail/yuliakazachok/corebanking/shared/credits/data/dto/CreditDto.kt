@@ -8,8 +8,9 @@ import java.sql.Date
 @JsonClass(generateAdapter = true)
 data class CreditDto(
     @Json(name = "id") val id: Int,
-    @Json(name = "id_avail_tariff") @SerializedName("id_avail_tariff") val idAvailTariff: Int,
+    @Json(name = "number_passport") @SerializedName("number_passport") val numberPassport: Long,
     @Json(name = "date_open") @SerializedName("date_open") val dateOpen: Date,
+    @Json(name = "rate") val rate: Int,
     @Json(name = "term") val term: Int,
     @Json(name = "sum") val sum: Int,
     @Json(name = "state") val state: Int

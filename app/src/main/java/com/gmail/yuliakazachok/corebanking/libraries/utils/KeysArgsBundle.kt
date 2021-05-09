@@ -9,6 +9,8 @@ object KeysArgsBundle {
     const val TARIFF_MODE_CLIENT = "TARIFF_MODE_CLIENT"
     const val TARIFF_CLIENT = "TARIFF_CLIENT"
 
+    const val CREDIT_DETAIL_PASSPORT = "CREDIT_DETAIL_PASSPORT"
+
     const val CLIENT_DETAIL = "CLIENT_DETAIL"
     const val CLIENT_LIST = "CLIENT_LIST"
     const val CLIENT_BLOCK = "CLIENT_BLOCK"
