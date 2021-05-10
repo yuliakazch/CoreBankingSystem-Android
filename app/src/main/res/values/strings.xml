@@ -22,6 +22,12 @@
 	<string name="close">Закрыт</string>
 	<string name="open">Открыт</string>
 	<string name="expired">Просрочен</string>
+	<string name="choose_tariff">Выберите тариф:</string>
+	<string name="input_sum">Введите сумму:</string>
+	<string name="input_term">Введите срок:</string>
+	<string name="from">\u0020от\u0020</string>
+	<string name="to">\u0020до\u0020</string>
+	<string name="format_date">в формате дд.мм.гггг</string>
 
 	<string name="clients">Клиенты</string>
 	<string name="client">Клиент</string>

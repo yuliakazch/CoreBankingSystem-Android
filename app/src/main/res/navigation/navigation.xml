@@ -57,6 +57,11 @@
             android:id="@+id/action_detailCreditFragment_to_detailClientFragment"
             app:destination="@id/detailClientFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/editCreditFragment"
+        android:name="com.gmail.yuliakazachok.corebanking.features.credits.editcredit.ui.EditCreditFragment"
+        android:label="fragment_edit_credit"
+        tools:layout="@layout/fragment_editcredit" />
 
     <fragment
         android:id="@+id/filtersClientsFragment"
@@ -87,6 +92,9 @@
         <action
             android:id="@+id/action_detailClientFragment_to_detailCreditFragment"
             app:destination="@id/detailCreditFragment" />
+        <action
+            android:id="@+id/action_detailClientFragment_to_editCreditFragment"
+            app:destination="@id/editCreditFragment" />
         <action
             android:id="@+id/action_detailClientFragment_to_blockClientFragment"
             app:destination="@id/blockClientFragment" />

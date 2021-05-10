@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -13,22 +14,20 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/dateText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:paddingStart="10dp"
-                android:text="@string/date_open"
+                android:text="@string/choose_tariff"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/dateValue"
+            <RadioGroup
+                android:id="@+id/tariffsRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:paddingStart="10dp"
-                android:textSize="20sp" />
+                android:layout_marginTop="12dp"
+                android:paddingStart="10dp" />
 
             <TextView
                 android:id="@+id/rateText"
@@ -46,7 +45,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:paddingStart="10dp"
-                android:textSize="20sp" />
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/sumText"
@@ -58,13 +58,15 @@
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/sumValue"
+            <EditText
+                android:id="@+id/sumField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
+                android:inputType="number"
                 android:paddingStart="10dp"
-                android:textSize="20sp" />
+                android:singleLine="true"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/termText"
@@ -76,63 +78,52 @@
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/termValue"
+            <EditText
+                android:id="@+id/termField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
+                android:inputType="number"
                 android:paddingStart="10dp"
-                android:textSize="20sp" />
+                android:singleLine="true"
+                android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/stateText"
+                android:id="@+id/dateOpenText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:paddingStart="10dp"
-                android:text="@string/state"
+                android:text="@string/date_open"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/stateValue"
+            <EditText
+                android:id="@+id/dateOpenField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
+                android:hint="@string/format_date"
+                android:inputType="date"
                 android:paddingStart="10dp"
-                android:textSize="20sp" />
+                android:singleLine="true"
+                android:textSize="18sp" />
 
             <Button
-                android:id="@+id/clientButton"
+                android:id="@+id/buttonGive"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/client"
+                android:layout_marginTop="16dp"
+                android:text="@string/give_credit"
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/paymentScheduleButton"
+                android:id="@+id/buttonCancel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:text="@string/payment_schedule"
-                android:textSize="16sp" />
-
-            <Button
-                android:id="@+id/paymentsButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:text="@string/payments"
-                android:textSize="16sp" />
-
-            <Button
-                android:id="@+id/makePaymentButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:text="@string/make_payment"
+                android:text="@string/cancel"
                 android:textSize="16sp" />
         </LinearLayout>
     </ScrollView>

@@ -1,11 +1,17 @@
 package com.gmail.yuliakazachok.corebanking.shared.credits.data.api
 
+import com.gmail.yuliakazachok.corebanking.shared.credits.data.dto.CreditCreateDto
 import com.gmail.yuliakazachok.corebanking.shared.credits.data.dto.CreditDto
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface CreditsApi {
 
     @GET("/credit/active/{number}")
     suspend fun getActiveCreditByPassport(@Path("number") number: Long): CreditDto
+
+    @POST("/credit")
+    suspend fun saveCredit(@Body creditCreateDto: CreditCreateDto)
 }
