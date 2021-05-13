@@ -10,4 +10,6 @@ interface ClientsRepository {
     suspend fun blockClient(number: Long, days: Int)
 
     suspend fun searchClients(filters: ClientFilters): List<Client>
+
+    suspend fun deleteClient(numberPassport: Long)
 }

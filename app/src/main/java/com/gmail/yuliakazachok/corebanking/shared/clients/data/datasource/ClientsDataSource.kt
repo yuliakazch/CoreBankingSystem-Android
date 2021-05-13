@@ -10,4 +10,6 @@ interface ClientsDataSource {
     suspend fun blockClient(number: Long, days: Int)
 
     suspend fun searchClients(filters: ClientFiltersDto): List<ClientDto>
+
+    suspend fun deleteClient(numberPassport: Long)
 }

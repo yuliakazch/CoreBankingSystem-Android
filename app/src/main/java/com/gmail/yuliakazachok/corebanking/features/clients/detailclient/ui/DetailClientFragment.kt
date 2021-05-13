@@ -70,6 +70,10 @@ class DetailClientFragment : Fragment(), DetailClientViewModel.EventListener {
                     }
                 )
             }
+            deleteButton.setOnClickListener {
+                viewModel.deleteTariff()
+                navController.popBackStack()
+            }
         }
     }
 
