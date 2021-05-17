@@ -13,7 +13,7 @@ import com.gmail.yuliakazachok.corebanking.R
 import com.gmail.yuliakazachok.corebanking.databinding.FragmentDetailclientBinding
 import com.gmail.yuliakazachok.corebanking.features.clients.detailclient.presentation.DetailClientViewModel
 import com.gmail.yuliakazachok.corebanking.libraries.utils.KeysArgsBundle
-import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.ClientStates
+import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.ClientState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -86,22 +86,22 @@ class DetailClientFragment : Fragment(), DetailClientViewModel.EventListener {
                     SimpleDateFormat("dd.MM.yyyy", Locale("Rus")).format(it.dateBirth)
                 placeValue.text = it.place
                 stateValue.text = when (it.state) {
-                    ClientStates.STATE_NOT_TARIFF -> resources.getString(R.string.not_tariff)
-                    ClientStates.STATE_NOT_CREDIT -> resources.getString(R.string.not_credit)
-                    ClientStates.STATE_YES_CREDIT -> resources.getString(R.string.yes_credit)
+                    ClientState.STATE_NOT_TARIFF -> resources.getString(R.string.not_tariff)
+                    ClientState.STATE_NOT_CREDIT -> resources.getString(R.string.not_credit)
+                    ClientState.STATE_YES_CREDIT -> resources.getString(R.string.yes_credit)
                     else -> resources.getString(R.string.locked) + " на " + it.countBlockDays + " дней"
                 }
-                creditButton.isEnabled = it.state != ClientStates.STATE_NOT_TARIFF
+                creditButton.isEnabled = it.state != ClientState.STATE_NOT_TARIFF
                 creditButton.text =
-                    if (it.state == ClientStates.STATE_NOT_TARIFF || it.state == ClientStates.STATE_NOT_CREDIT) {
+                    if (it.state == ClientState.STATE_NOT_TARIFF || it.state == ClientState.STATE_NOT_CREDIT) {
                         resources.getString(R.string.give_credit)
                     } else {
                         resources.getString(R.string.active_credit)
                     }
-                blockButton.isEnabled = it.state == ClientStates.STATE_YES_CREDIT
+                blockButton.isEnabled = it.state == ClientState.STATE_YES_CREDIT
 
                 creditButton.setOnClickListener { _ ->
-                    if (it.state == ClientStates.STATE_NOT_CREDIT) {
+                    if (it.state == ClientState.STATE_NOT_CREDIT) {
                         navController.navigate(
                             R.id.action_detailClientFragment_to_editCreditFragment,
                             Bundle().apply {

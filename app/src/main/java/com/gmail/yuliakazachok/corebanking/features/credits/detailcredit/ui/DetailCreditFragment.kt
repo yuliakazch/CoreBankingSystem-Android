@@ -13,7 +13,7 @@ import com.gmail.yuliakazachok.corebanking.R
 import com.gmail.yuliakazachok.corebanking.databinding.FragmentDetailcreditBinding
 import com.gmail.yuliakazachok.corebanking.features.credits.detailcredit.presentation.DetailCreditViewModel
 import com.gmail.yuliakazachok.corebanking.libraries.utils.KeysArgsBundle
-import com.gmail.yuliakazachok.corebanking.shared.credits.domain.entities.CreditStates
+import com.gmail.yuliakazachok.corebanking.shared.credits.domain.entities.CreditState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -59,11 +59,11 @@ class DetailCreditFragment : Fragment(), DetailCreditViewModel.EventListener {
                 sumValue.text = it.sum.toString()
                 termValue.text = it.term.toString()
                 stateValue.text = when (it.state) {
-                    CreditStates.STATE_CLOSE -> resources.getString(R.string.close)
-                    CreditStates.STATE_ACTIVE -> resources.getString(R.string.open)
+                    CreditState.STATE_CLOSE -> resources.getString(R.string.close)
+                    CreditState.STATE_ACTIVE -> resources.getString(R.string.open)
                     else -> resources.getString(R.string.expired)
                 }
-                makePaymentButton.isEnabled = it.state != CreditStates.STATE_CLOSE
+                makePaymentButton.isEnabled = it.state != CreditState.STATE_CLOSE
             }
         }.launchIn(viewLifecycleOwner.lifecycle.coroutineScope)
     }

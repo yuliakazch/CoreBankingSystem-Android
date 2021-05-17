@@ -2,7 +2,7 @@ package com.gmail.yuliakazachok.corebanking.features.clients.filtersclients.pres
 
 import androidx.lifecycle.ViewModel
 import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.ClientFilters
-import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.ClientStates
+import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.ClientState
 import javax.inject.Inject
 
 class FiltersClientsViewModel @Inject constructor() : ViewModel() {
@@ -36,19 +36,19 @@ class FiltersClientsViewModel @Inject constructor() : ViewModel() {
         notCreditChecked: Boolean,
         yesCreditChecked: Boolean,
         lockedChecked: Boolean
-    ): List<Int>? {
-        val list = mutableListOf<Int>()
+    ): List<ClientState>? {
+        val list = mutableListOf<ClientState>()
         if (notTariffChecked) {
-            list.add(ClientStates.STATE_NOT_TARIFF)
+            list.add(ClientState.STATE_NOT_TARIFF)
         }
         if (notCreditChecked) {
-            list.add(ClientStates.STATE_NOT_CREDIT)
+            list.add(ClientState.STATE_NOT_CREDIT)
         }
         if (yesCreditChecked) {
-            list.add(ClientStates.STATE_YES_CREDIT)
+            list.add(ClientState.STATE_YES_CREDIT)
         }
         if (lockedChecked) {
-            list.add(ClientStates.STATE_BLOCKED)
+            list.add(ClientState.STATE_BLOCKED)
         }
         return if (list.isEmpty()) null else list
     }

@@ -7,6 +7,6 @@ data class Client(
     val fio: String,
     val dateBirth: Date,
     val place: String,
-    val state: Int,
+    val state: ClientState,
     val countBlockDays: Int
 )

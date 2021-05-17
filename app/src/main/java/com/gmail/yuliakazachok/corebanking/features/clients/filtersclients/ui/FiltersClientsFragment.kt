@@ -11,8 +11,6 @@ import com.gmail.yuliakazachok.corebanking.R
 import com.gmail.yuliakazachok.corebanking.databinding.FragmentFiltersclientsBinding
 import com.gmail.yuliakazachok.corebanking.features.clients.filtersclients.presentation.FiltersClientsViewModel
 import com.gmail.yuliakazachok.corebanking.libraries.utils.KeysArgsBundle
-import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.ClientFilters
-import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.ClientStates
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

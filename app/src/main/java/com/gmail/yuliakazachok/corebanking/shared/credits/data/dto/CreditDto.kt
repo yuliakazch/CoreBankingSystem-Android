@@ -1,5 +1,6 @@
 package com.gmail.yuliakazachok.corebanking.shared.credits.data.dto
 
+import com.gmail.yuliakazachok.corebanking.shared.credits.domain.entities.CreditState
 import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -13,5 +14,5 @@ data class CreditDto(
     @Json(name = "rate") val rate: Int,
     @Json(name = "term") val term: Int,
     @Json(name = "sum") val sum: Int,
-    @Json(name = "state") val state: Int
+    @Json(name = "state") val state: CreditState
 )

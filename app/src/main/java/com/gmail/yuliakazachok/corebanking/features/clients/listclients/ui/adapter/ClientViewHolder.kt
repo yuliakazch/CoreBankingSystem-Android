@@ -8,7 +8,7 @@ import com.gmail.yuliakazachok.corebanking.R
 import com.gmail.yuliakazachok.corebanking.databinding.ItemClientBinding
 import com.gmail.yuliakazachok.corebanking.features.clients.listclients.presentation.ListClientsViewModel
 import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.Client
-import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.ClientStates
+import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.ClientState
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -33,9 +33,9 @@ class ClientViewHolder(
             fioText.text = item.fio
             dateText.text = SimpleDateFormat("dd.MM.yyyy", Locale("Rus")).format(item.dateBirth)
             stateText.text = when (item.state) {
-                ClientStates.STATE_NOT_TARIFF -> root.resources.getString(R.string.not_tariff)
-                ClientStates.STATE_NOT_CREDIT -> root.resources.getString(R.string.not_credit)
-                ClientStates.STATE_YES_CREDIT -> root.resources.getString(R.string.yes_credit)
+                ClientState.STATE_NOT_TARIFF -> root.resources.getString(R.string.not_tariff)
+                ClientState.STATE_NOT_CREDIT -> root.resources.getString(R.string.not_credit)
+                ClientState.STATE_YES_CREDIT -> root.resources.getString(R.string.yes_credit)
                 else -> root.resources.getString(R.string.locked)
             }
             root.setOnClickListener {

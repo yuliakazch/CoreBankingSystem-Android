@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.gmail.yuliakazachok.corebanking.libraries.core.presentation.EventsDispatcher
 import com.gmail.yuliakazachok.corebanking.libraries.core.presentation.EventsDispatcherOwner
 import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.Client
-import com.gmail.yuliakazachok.corebanking.shared.clients.domain.entities.ClientStates
 import com.gmail.yuliakazachok.corebanking.shared.clients.domain.usecases.DeleteClientUseCase
 import com.gmail.yuliakazachok.corebanking.shared.clients.domain.usecases.GetClientByPassportUseCase
 import kotlinx.coroutines.flow.Flow

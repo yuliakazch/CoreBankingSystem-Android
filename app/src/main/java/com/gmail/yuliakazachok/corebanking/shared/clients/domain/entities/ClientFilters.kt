@@ -5,5 +5,5 @@ import java.io.Serializable
 data class ClientFilters(
     val fio: String?,
     val year: Int?,
-    val state: List<Int>?
+    val state: List<ClientState>?
 ) : Serializable
