@@ -1,6 +1,10 @@
 <resources>
 	<string name="app_name">Банковская система</string>
 
+	<string name="login">Логин</string>
+	<string name="password">Пароль</string>
+	<string name="sign_in">Войти</string>
+
 	<string name="tariffs">Тарифы</string>
 	<string name="tariff">Тариф</string>
 	<string name="rate">Ставка, проценты</string>

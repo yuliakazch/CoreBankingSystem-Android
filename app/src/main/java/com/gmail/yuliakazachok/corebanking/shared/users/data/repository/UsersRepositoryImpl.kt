@@ -12,6 +12,18 @@ class UsersRepositoryImpl @Inject constructor(
     private val dataSource: UsersDataSource
 ) : UsersRepository {
 
+    override fun isTokenExist(): Boolean = dataSource.isTokenExist()
+
+    override fun getToken(): Token = dataSource.getToken().toEntity()
+
+    override fun saveToken(token: Token) {
+        dataSource.saveToken(token.toDto())
+    }
+
+    override fun clearToken() {
+        dataSource.clearToken()
+    }
+
     override suspend fun auth(credentials: Credentials): Token =
         dataSource.auth(credentials.toDto()).toEntity()
 }

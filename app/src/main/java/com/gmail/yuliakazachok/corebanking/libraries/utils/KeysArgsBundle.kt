@@ -2,6 +2,9 @@ package com.gmail.yuliakazachok.corebanking.libraries.utils
 
 object KeysArgsBundle {
 
+    const val TOKEN_REFERENCES = "TOKEN_REFERENCES"
+    const val TOKEN = "TOKEN"
+
     const val TARIFF_DETAIL = "TARIFF_DETAIL"
     const val TARIFF_EDIT = "TARIFF_EDIT"
     const val TARIFF_MODE = "TARIFF_MODE"
