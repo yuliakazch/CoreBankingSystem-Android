@@ -9,5 +9,6 @@ data class Credit(
     val rate: Int,
     val term: Int,
     val sum: Int,
-    val state: CreditState
+    val state: CreditState,
+    val balance: Float
 )

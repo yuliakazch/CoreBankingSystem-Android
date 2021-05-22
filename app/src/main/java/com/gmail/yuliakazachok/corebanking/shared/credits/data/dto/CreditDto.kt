@@ -14,5 +14,6 @@ data class CreditDto(
     @Json(name = "rate") val rate: Int,
     @Json(name = "term") val term: Int,
     @Json(name = "sum") val sum: Int,
-    @Json(name = "state") val state: CreditState
+    @Json(name = "state") val state: CreditState,
+    @Json(name = "balance") val balance: Float
 )
