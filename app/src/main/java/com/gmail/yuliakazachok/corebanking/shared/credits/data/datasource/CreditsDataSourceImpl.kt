@@ -12,6 +12,12 @@ class CreditsDataSourceImpl @Inject constructor(
     override suspend fun getActiveCreditByPassport(numberPassport: Long): CreditDto =
         api.getActiveCreditByPassport(numberPassport)
 
+    override suspend fun getCreditById(id: Int): CreditDto =
+        api.getCreditById(id)
+
+    override suspend fun getHistoryCredits(numberPassport: Long): List<CreditDto> =
+        api.getHistoryCredits(numberPassport)
+
     override suspend fun saveCredit(creditCreateDto: CreditCreateDto) =
         api.saveCredit(creditCreateDto)
 }

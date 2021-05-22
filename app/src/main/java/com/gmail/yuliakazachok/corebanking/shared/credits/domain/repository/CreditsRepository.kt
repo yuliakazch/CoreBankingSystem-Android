@@ -7,5 +7,9 @@ interface CreditsRepository {
 
     suspend fun getActiveCreditByPassport(numberPassport: Long): Credit
 
+    suspend fun getCreditById(id: Int): Credit
+
+    suspend fun getHistoryCredits(numberPassport: Long): List<Credit>
+
     suspend fun saveCredit(creditCreate: CreditCreate)
 }

@@ -62,7 +62,7 @@
         android:id="@+id/detailCreditFragment"
         android:name="com.gmail.yuliakazachok.corebanking.features.credits.detailcredit.ui.DetailCreditFragment"
         android:label="fragment_detail_credit"
-        tools:layout="@layout/fragment_detailcredit" >
+        tools:layout="@layout/fragment_detailcredit">
         <action
             android:id="@+id/action_detailCreditFragment_to_detailClientFragment"
             app:destination="@id/detailClientFragment" />
@@ -72,6 +72,15 @@
         android:name="com.gmail.yuliakazachok.corebanking.features.credits.editcredit.ui.EditCreditFragment"
         android:label="fragment_edit_credit"
         tools:layout="@layout/fragment_editcredit" />
+    <fragment
+        android:id="@+id/listCreditsFragment"
+        android:name="com.gmail.yuliakazachok.corebanking.features.credits.listcredits.ui.ListCreditsFragment"
+        android:label="fragment_list_credits"
+        tools:layout="@layout/fragment_listcredits">
+        <action
+            android:id="@+id/action_listCreditsFragment_to_detailCreditFragment"
+            app:destination="@id/detailCreditFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/filtersClientsFragment"
@@ -98,7 +107,7 @@
         android:id="@+id/detailClientFragment"
         android:name="com.gmail.yuliakazachok.corebanking.features.clients.detailclient.ui.DetailClientFragment"
         android:label="fragment_detail_client"
-        tools:layout="@layout/fragment_detailclient" >
+        tools:layout="@layout/fragment_detailclient">
         <action
             android:id="@+id/action_detailClientFragment_to_detailCreditFragment"
             app:destination="@id/detailCreditFragment" />
@@ -111,6 +120,9 @@
         <action
             android:id="@+id/action_detailClientFragment_to_mainTariffsFragment"
             app:destination="@id/mainTariffsFragment" />
+        <action
+            android:id="@+id/action_detailClientFragment_to_listCreditsFragment"
+            app:destination="@id/listCreditsFragment" />
     </fragment>
     <fragment
         android:id="@+id/blockClientFragment"

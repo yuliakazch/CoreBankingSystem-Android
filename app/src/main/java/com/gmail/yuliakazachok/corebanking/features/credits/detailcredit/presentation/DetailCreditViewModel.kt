@@ -6,6 +6,7 @@ import com.gmail.yuliakazachok.corebanking.libraries.core.presentation.EventsDis
 import com.gmail.yuliakazachok.corebanking.libraries.core.presentation.EventsDispatcherOwner
 import com.gmail.yuliakazachok.corebanking.shared.credits.domain.entities.Credit
 import com.gmail.yuliakazachok.corebanking.shared.credits.domain.usecases.GetActiveCreditUseCase
+import com.gmail.yuliakazachok.corebanking.shared.credits.domain.usecases.GetCreditByIdUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.filterNotNull
@@ -13,7 +14,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DetailCreditViewModel @Inject constructor(
-    private val getActiveCreditUseCase: GetActiveCreditUseCase
+    private val getActiveCreditUseCase: GetActiveCreditUseCase,
+    private val getCreditByIdUseCase: GetCreditByIdUseCase
 ) : ViewModel(), EventsDispatcherOwner<DetailCreditViewModel.EventListener> {
 
     interface EventListener {
@@ -32,6 +34,16 @@ class DetailCreditViewModel @Inject constructor(
         numberPassport?.let {
             try {
                 _credit.value = getActiveCreditUseCase(it)
+            } catch (throwable: Throwable) {
+                eventsDispatcher.dispatchEvent { showToastError() }
+            }
+        }
+    }
+
+    fun getCreditById(id: Int?) = viewModelScope.launch {
+        id?.let {
+            try {
+                _credit.value = getCreditByIdUseCase(it)
             } catch (throwable: Throwable) {
                 eventsDispatcher.dispatchEvent { showToastError() }
             }

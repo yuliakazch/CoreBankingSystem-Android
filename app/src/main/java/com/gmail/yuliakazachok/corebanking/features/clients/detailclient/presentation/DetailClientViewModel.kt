@@ -41,7 +41,7 @@ class DetailClientViewModel @Inject constructor(
         }
     }
 
-    fun deleteTariff() = runBlocking {
+    fun deleteClient() = runBlocking {
         _client.value?.let {
             try {
                 deleteClientUseCase(it.numberPassport)

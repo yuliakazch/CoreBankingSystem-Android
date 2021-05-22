@@ -12,6 +12,12 @@ interface CreditsApi {
     @GET("/credit/active/{number}")
     suspend fun getActiveCreditByPassport(@Path("number") number: Long): CreditDto
 
+    @GET("/credit/{id}")
+    suspend fun getCreditById(@Path("id") id: Int): CreditDto
+
+    @GET("/credit/history/{number}")
+    suspend fun getHistoryCredits(@Path("number") number: Long): List<CreditDto>
+
     @POST("/credit")
     suspend fun saveCredit(@Body creditCreateDto: CreditCreateDto)
 }

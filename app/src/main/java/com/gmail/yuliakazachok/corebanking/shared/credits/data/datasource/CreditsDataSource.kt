@@ -7,5 +7,9 @@ interface CreditsDataSource {
 
     suspend fun getActiveCreditByPassport(numberPassport: Long): CreditDto
 
+    suspend fun getCreditById(id: Int): CreditDto
+
+    suspend fun getHistoryCredits(numberPassport: Long): List<CreditDto>
+
     suspend fun saveCredit(creditCreateDto: CreditCreateDto)
 }

@@ -48,7 +48,12 @@ class DetailCreditFragment : Fragment(), DetailCreditViewModel.EventListener {
 
     override fun onStart() {
         super.onStart()
-        viewModel.getCredit(arguments?.getLong(KeysArgsBundle.CREDIT_DETAIL_PASSPORT))
+        val mode = arguments?.getString(KeysArgsBundle.CREDIT_MODE)
+        if (mode == KeysArgsBundle.CREDIT_MODE_PASSPORT) {
+            viewModel.getCredit(arguments?.getLong(KeysArgsBundle.CREDIT_DETAIL_PASSPORT))
+        } else if (mode == KeysArgsBundle.CREDIT_MODE_ID) {
+            viewModel.getCreditById(arguments?.getInt(KeysArgsBundle.CREDIT_DETAIL_ID))
+        }
     }
 
     private fun setTextAndButtons() {

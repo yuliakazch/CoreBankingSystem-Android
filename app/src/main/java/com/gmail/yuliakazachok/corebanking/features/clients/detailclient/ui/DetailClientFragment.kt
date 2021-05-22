@@ -70,8 +70,16 @@ class DetailClientFragment : Fragment(), DetailClientViewModel.EventListener {
                     }
                 )
             }
+            historyCreditsButton.setOnClickListener {
+                navController.navigate(
+                    R.id.action_detailClientFragment_to_listCreditsFragment,
+                    Bundle().apply {
+                        putLong(KeysArgsBundle.CREDIT_LIST, viewModel.getNumberPassport())
+                    }
+                )
+            }
             deleteButton.setOnClickListener {
-                viewModel.deleteTariff()
+                viewModel.deleteClient()
                 navController.popBackStack()
             }
         }
@@ -116,6 +124,7 @@ class DetailClientFragment : Fragment(), DetailClientViewModel.EventListener {
                                     KeysArgsBundle.CREDIT_DETAIL_PASSPORT,
                                     viewModel.getNumberPassport()
                                 )
+                                putString(KeysArgsBundle.CREDIT_MODE, KeysArgsBundle.CREDIT_MODE_PASSPORT)
                             }
                         )
                     }
