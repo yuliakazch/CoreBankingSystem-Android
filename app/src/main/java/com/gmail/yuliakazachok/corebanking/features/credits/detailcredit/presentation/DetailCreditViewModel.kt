@@ -30,6 +30,8 @@ class DetailCreditViewModel @Inject constructor(
 
     fun getNumberPassport() = _credit.value?.numberPassport ?: 0
 
+    fun getIdCredit() = _credit.value?.id ?: 0
+
     fun getCredit(numberPassport: Long?) = viewModelScope.launch {
         numberPassport?.let {
             try {

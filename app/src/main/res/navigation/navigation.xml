@@ -66,6 +66,12 @@
         <action
             android:id="@+id/action_detailCreditFragment_to_detailClientFragment"
             app:destination="@id/detailClientFragment" />
+        <action
+            android:id="@+id/action_detailCreditFragment_to_listPaymentsFragment"
+            app:destination="@id/listPaymentsFragment" />
+        <action
+            android:id="@+id/action_detailCreditFragment_to_paymentScheduleFragment"
+            app:destination="@id/paymentScheduleFragment" />
     </fragment>
     <fragment
         android:id="@+id/editCreditFragment"
@@ -156,4 +162,15 @@
         android:name="com.gmail.yuliakazachok.corebanking.features.commissions.editcommission.ui.EditCommissionFragment"
         android:label="fragment_edit_commission"
         tools:layout="@layout/fragment_editcommission" />
+
+    <fragment
+        android:id="@+id/listPaymentsFragment"
+        android:name="com.gmail.yuliakazachok.corebanking.features.payments.listpayments.ui.ListPaymentsFragment"
+        android:label="fragment_list_payments"
+        tools:layout="@layout/fragment_listpayments" />
+    <fragment
+        android:id="@+id/paymentScheduleFragment"
+        android:name="com.gmail.yuliakazachok.corebanking.features.payments.paymentschedule.ui.PaymentScheduleFragment"
+        android:label="fragment_payment_schedule"
+        tools:layout="@layout/fragment_paymentschedule" />
 </navigation>

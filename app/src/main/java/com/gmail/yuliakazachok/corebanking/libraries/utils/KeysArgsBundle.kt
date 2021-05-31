@@ -26,4 +26,7 @@ object KeysArgsBundle {
 
     const val COMMISSION_DETAIL = "COMMISSION_DETAIL"
     const val COMMISSION_EDIT = "COMMISSION_EDIT"
+
+    const val PAYMENT_LIST = "PAYMENT_LIST"
+    const val PAYMENT_SCHEDULE = "PAYMENT_SCHEDULE"
 }

@@ -74,13 +74,31 @@ class DetailCreditFragment : Fragment(), DetailCreditViewModel.EventListener {
     }
 
     private fun setListeners() {
-        binding.clientButton.setOnClickListener {
-            navController.navigate(
-                R.id.action_detailCreditFragment_to_detailClientFragment,
-                Bundle().apply {
-                    putLong(KeysArgsBundle.CLIENT_DETAIL, viewModel.getNumberPassport())
-                }
-            )
+        with(binding) {
+            clientButton.setOnClickListener {
+                navController.navigate(
+                    R.id.action_detailCreditFragment_to_detailClientFragment,
+                    Bundle().apply {
+                        putLong(KeysArgsBundle.CLIENT_DETAIL, viewModel.getNumberPassport())
+                    }
+                )
+            }
+            paymentsButton.setOnClickListener {
+                navController.navigate(
+                    R.id.action_detailCreditFragment_to_listPaymentsFragment,
+                    Bundle().apply {
+                        putInt(KeysArgsBundle.PAYMENT_LIST, viewModel.getIdCredit())
+                    }
+                )
+            }
+            paymentScheduleButton.setOnClickListener {
+                navController.navigate(
+                    R.id.action_detailCreditFragment_to_paymentScheduleFragment,
+                    Bundle().apply {
+                        putInt(KeysArgsBundle.PAYMENT_SCHEDULE, viewModel.getIdCredit())
+                    }
+                )
+            }
         }
     }
 

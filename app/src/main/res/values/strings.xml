@@ -68,6 +68,10 @@
 	<string name="commission">Комиссия</string>
 	<string name="interest">Процент</string>
 
+	<string name="not_paid">Не оплачен</string>
+	<string name="paid">Оплачен</string>
+	<string name="missed">Пропущен</string>
+
 	<string name="message_error">Произошла ошибка!</string>
 	<string name="edit">Редактировать</string>
 	<string name="delete">Удалить</string>
