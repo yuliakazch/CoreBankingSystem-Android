@@ -15,6 +15,9 @@ class ClientsDataSourceImpl @Inject constructor(
     override suspend fun blockClient(number: Long, days: Int) =
         api.blockClient(number, days)
 
+    override suspend fun unblockClient(number: Long) =
+        api.unblockClient(number)
+
     override suspend fun searchClients(filters: ClientFiltersDto): List<ClientDto> =
         api.searchClients(filters)
 

@@ -12,6 +12,9 @@ interface ClientsApi {
     @GET("/client/block")
     suspend fun blockClient(@Query("number") number: Long, @Query("days") days: Int)
 
+    @GET("/client/unblock")
+    suspend fun unblockClient(@Query("number") number: Long)
+
     @POST("/client/search")
     suspend fun searchClients(@Body filters: ClientFiltersDto): List<ClientDto>
 

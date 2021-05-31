@@ -54,12 +54,17 @@ class DetailClientFragment : Fragment(), DetailClientViewModel.EventListener {
     private fun setListeners() {
         with(binding) {
             blockButton.setOnClickListener {
-                navController.navigate(
-                    R.id.action_detailClientFragment_to_blockClientFragment,
-                    Bundle().apply {
-                        putLong(KeysArgsBundle.CLIENT_BLOCK, viewModel.getNumberPassport())
-                    }
-                )
+                if (viewModel.getClientState() == ClientState.STATE_BLOCKED) {
+                    viewModel.unblockClient()
+                    viewModel.getClient(viewModel.getNumberPassport())
+                } else {
+                    navController.navigate(
+                        R.id.action_detailClientFragment_to_blockClientFragment,
+                        Bundle().apply {
+                            putLong(KeysArgsBundle.CLIENT_BLOCK, viewModel.getNumberPassport())
+                        }
+                    )
+                }
             }
             tariffsButton.setOnClickListener {
                 navController.navigate(
@@ -106,7 +111,12 @@ class DetailClientFragment : Fragment(), DetailClientViewModel.EventListener {
                     } else {
                         resources.getString(R.string.active_credit)
                     }
-                blockButton.isEnabled = it.state == ClientState.STATE_YES_CREDIT
+                blockButton.text =
+                    if (it.state == ClientState.STATE_BLOCKED) {
+                        resources.getString(R.string.unblock)
+                    } else {
+                        resources.getString(R.string.block)
+                    }
 
                 creditButton.setOnClickListener { _ ->
                     if (it.state == ClientState.STATE_NOT_CREDIT) {
@@ -124,7 +134,10 @@ class DetailClientFragment : Fragment(), DetailClientViewModel.EventListener {
                                     KeysArgsBundle.CREDIT_DETAIL_PASSPORT,
                                     viewModel.getNumberPassport()
                                 )
-                                putString(KeysArgsBundle.CREDIT_MODE, KeysArgsBundle.CREDIT_MODE_PASSPORT)
+                                putString(
+                                    KeysArgsBundle.CREDIT_MODE,
+                                    KeysArgsBundle.CREDIT_MODE_PASSPORT
+                                )
                             }
                         )
                     }

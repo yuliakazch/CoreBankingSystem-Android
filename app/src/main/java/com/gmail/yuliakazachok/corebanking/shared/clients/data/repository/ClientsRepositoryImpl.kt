@@ -19,6 +19,9 @@ class ClientsRepositoryImpl @Inject constructor(
     override suspend fun blockClient(number: Long, days: Int) =
         dataSource.blockClient(number, days)
 
+    override suspend fun unblockClient(number: Long) =
+        dataSource.unblockClient(number)
+
     override suspend fun searchClients(filters: ClientFilters): List<Client> =
         dataSource.searchClients(filters.toDto()).toListEntity()
 
