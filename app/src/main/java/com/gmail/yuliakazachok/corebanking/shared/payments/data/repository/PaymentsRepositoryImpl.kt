@@ -1,8 +1,10 @@
 package com.gmail.yuliakazachok.corebanking.shared.payments.data.repository
 
 import com.gmail.yuliakazachok.corebanking.shared.payments.data.datasource.PaymentsDataSource
+import com.gmail.yuliakazachok.corebanking.shared.payments.data.mapper.toDto
 import com.gmail.yuliakazachok.corebanking.shared.payments.data.mapper.toListEntity
 import com.gmail.yuliakazachok.corebanking.shared.payments.domain.entities.Payment
+import com.gmail.yuliakazachok.corebanking.shared.payments.domain.entities.PaymentCreate
 import com.gmail.yuliakazachok.corebanking.shared.payments.domain.entities.PaymentSchedule
 import com.gmail.yuliakazachok.corebanking.shared.payments.domain.repository.PaymentsRepository
 import javax.inject.Inject
@@ -16,4 +18,7 @@ class PaymentsRepositoryImpl @Inject constructor(
 
     override suspend fun getPaymentSchedule(idCredit: Int): List<PaymentSchedule> =
         dataSource.getPaymentSchedule(idCredit).toListEntity()
+
+    override suspend fun makePayment(paymentCreate: PaymentCreate) =
+        dataSource.makePayment(paymentCreate.toDto())
 }
