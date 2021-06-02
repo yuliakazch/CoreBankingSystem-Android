@@ -29,4 +29,5 @@ object KeysArgsBundle {
 
     const val PAYMENT_LIST = "PAYMENT_LIST"
     const val PAYMENT_SCHEDULE = "PAYMENT_SCHEDULE"
+    const val PAYMENT_MAKE = "PAYMENT_MAKE"
 }

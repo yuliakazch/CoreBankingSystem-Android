@@ -75,6 +75,9 @@
         <action
             android:id="@+id/action_detailCreditFragment_to_paymentScheduleFragment"
             app:destination="@id/paymentScheduleFragment" />
+        <action
+            android:id="@+id/action_detailCreditFragment_to_makePaymentFragment"
+            app:destination="@id/makePaymentFragment" />
     </fragment>
     <fragment
         android:id="@+id/editCreditFragment"
@@ -176,6 +179,11 @@
         android:name="com.gmail.yuliakazachok.corebanking.features.payments.paymentschedule.ui.PaymentScheduleFragment"
         android:label="fragment_payment_schedule"
         tools:layout="@layout/fragment_paymentschedule" />
+    <fragment
+        android:id="@+id/makePaymentFragment"
+        android:name="com.gmail.yuliakazachok.corebanking.features.payments.makepayment.ui.MakePaymentFragment"
+        android:label="fragment_make_payment"
+        tools:layout="@layout/fragment_makepayment" />
 
     <fragment
         android:id="@+id/reportFragment"

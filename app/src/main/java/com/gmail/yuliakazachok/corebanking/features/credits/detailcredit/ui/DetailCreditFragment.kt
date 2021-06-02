@@ -99,6 +99,14 @@ class DetailCreditFragment : Fragment(), DetailCreditViewModel.EventListener {
                     }
                 )
             }
+            makePaymentButton.setOnClickListener {
+                navController.navigate(
+                    R.id.action_detailCreditFragment_to_makePaymentFragment,
+                    Bundle().apply {
+                        putInt(KeysArgsBundle.PAYMENT_MAKE, viewModel.getIdCredit())
+                    }
+                )
+            }
         }
     }
 

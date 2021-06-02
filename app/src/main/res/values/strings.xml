@@ -27,7 +27,7 @@
 	<string name="open">Открыт</string>
 	<string name="expired">Просрочен</string>
 	<string name="choose_tariff">Выберите тариф:</string>
-	<string name="input_sum">Введите сумму:</string>
+	<string name="input_sum">введите сумму</string>
 	<string name="input_term">Введите срок:</string>
 	<string name="from">\u0020от\u0020</string>
 	<string name="to">\u0020до\u0020</string>
@@ -71,6 +71,7 @@
 	<string name="not_paid">Не оплачен</string>
 	<string name="paid">Оплачен</string>
 	<string name="missed">Пропущен</string>
+	<string name="date_payment">Дата платежа</string>
 
 	<string name="report">Отчет</string>
 
