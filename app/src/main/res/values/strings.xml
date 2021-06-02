@@ -72,6 +72,8 @@
 	<string name="paid">Оплачен</string>
 	<string name="missed">Пропущен</string>
 
+	<string name="report">Отчет</string>
+
 	<string name="message_error">Произошла ошибка!</string>
 	<string name="edit">Редактировать</string>
 	<string name="delete">Удалить</string>

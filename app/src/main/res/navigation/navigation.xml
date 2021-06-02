@@ -24,6 +24,9 @@
             android:id="@+id/action_homeFragment_to_mainTariffsFragment"
             app:destination="@id/mainTariffsFragment" />
         <action
+            android:id="@+id/action_homeFragment_to_reportFragment"
+            app:destination="@id/reportFragment" />
+        <action
             android:id="@+id/action_homeFragment_to_filtersClientsFragment"
             app:destination="@id/filtersClientsFragment" />
         <action
@@ -173,4 +176,10 @@
         android:name="com.gmail.yuliakazachok.corebanking.features.payments.paymentschedule.ui.PaymentScheduleFragment"
         android:label="fragment_payment_schedule"
         tools:layout="@layout/fragment_paymentschedule" />
+
+    <fragment
+        android:id="@+id/reportFragment"
+        android:name="com.gmail.yuliakazachok.corebanking.features.report.ui.ReportFragment"
+        android:label="fragment_report"
+        tools:layout="@layout/fragment_report" />
 </navigation>
